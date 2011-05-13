@@ -1,0 +1,465 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E201A2C8137CC7D000A51A46 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E201A2C7137CC7D000A51A46 /* UIKit.framework */; };
+		E201A2CA137CC7D000A51A46 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E201A2C9137CC7D000A51A46 /* Foundation.framework */; };
+		E201A2CC137CC7D000A51A46 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E201A2CB137CC7D000A51A46 /* CoreGraphics.framework */; };
+		E201A2D2137CC7D000A51A46 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E201A2D0137CC7D000A51A46 /* InfoPlist.strings */; };
+		E201A2D5137CC7D000A51A46 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E201A2D4137CC7D000A51A46 /* main.m */; };
+		E201A2D8137CC7D000A51A46 /* OperaPadAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E201A2D7137CC7D000A51A46 /* OperaPadAppDelegate.m */; };
+		E201A2DB137CC7D000A51A46 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = E201A2D9137CC7D000A51A46 /* MainWindow.xib */; };
+		E201A2DE137CC7D000A51A46 /* OperaPadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E201A2DD137CC7D000A51A46 /* OperaPadViewController.m */; };
+		E201A2E1137CC7D000A51A46 /* OperaPadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E201A2DF137CC7D000A51A46 /* OperaPadViewController.xib */; };
+		E201A2E8137CC7D000A51A46 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E201A2C7137CC7D000A51A46 /* UIKit.framework */; };
+		E201A2E9137CC7D000A51A46 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E201A2C9137CC7D000A51A46 /* Foundation.framework */; };
+		E201A2EA137CC7D000A51A46 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E201A2CB137CC7D000A51A46 /* CoreGraphics.framework */; };
+		E201A2F2137CC7D000A51A46 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E201A2F0137CC7D000A51A46 /* InfoPlist.strings */; };
+		E201A2F5137CC7D000A51A46 /* OperaPadTests.h in Resources */ = {isa = PBXBuildFile; fileRef = E201A2F4137CC7D000A51A46 /* OperaPadTests.h */; };
+		E201A2F7137CC7D000A51A46 /* OperaPadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E201A2F6137CC7D000A51A46 /* OperaPadTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E201A2EB137CC7D000A51A46 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E201A2BA137CC7D000A51A46 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E201A2C2137CC7D000A51A46;
+			remoteInfo = OperaPad;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E201A2C3137CC7D000A51A46 /* OperaPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OperaPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E201A2C7137CC7D000A51A46 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E201A2C9137CC7D000A51A46 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E201A2CB137CC7D000A51A46 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E201A2CF137CC7D000A51A46 /* OperaPad-Info.plist */ = {isa = PBXFileReference; path = "OperaPad-Info.plist"; sourceTree = "<group>"; };
+		E201A2D1137CC7D000A51A46 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E201A2D3137CC7D000A51A46 /* OperaPad-Prefix.pch */ = {isa = PBXFileReference; path = "OperaPad-Prefix.pch"; sourceTree = "<group>"; };
+		E201A2D4137CC7D000A51A46 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E201A2D6137CC7D000A51A46 /* OperaPadAppDelegate.h */ = {isa = PBXFileReference; path = OperaPadAppDelegate.h; sourceTree = "<group>"; };
+		E201A2D7137CC7D000A51A46 /* OperaPadAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OperaPadAppDelegate.m; sourceTree = "<group>"; };
+		E201A2DA137CC7D000A51A46 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		E201A2DC137CC7D000A51A46 /* OperaPadViewController.h */ = {isa = PBXFileReference; path = OperaPadViewController.h; sourceTree = "<group>"; };
+		E201A2DD137CC7D000A51A46 /* OperaPadViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OperaPadViewController.m; sourceTree = "<group>"; };
+		E201A2E0137CC7D000A51A46 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/OperaPadViewController.xib; sourceTree = "<group>"; };
+		E201A2E7137CC7D000A51A46 /* OperaPadTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OperaPadTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E201A2EF137CC7D000A51A46 /* OperaPadTests-Info.plist */ = {isa = PBXFileReference; path = "OperaPadTests-Info.plist"; sourceTree = "<group>"; };
+		E201A2F1137CC7D000A51A46 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E201A2F3137CC7D000A51A46 /* OperaPadTests-Prefix.pch */ = {isa = PBXFileReference; path = "OperaPadTests-Prefix.pch"; sourceTree = "<group>"; };
+		E201A2F4137CC7D000A51A46 /* OperaPadTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OperaPadTests.h; sourceTree = "<group>"; };
+		E201A2F6137CC7D000A51A46 /* OperaPadTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OperaPadTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E201A2C0137CC7D000A51A46 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E201A2C8137CC7D000A51A46 /* UIKit.framework in Frameworks */,
+				E201A2CA137CC7D000A51A46 /* Foundation.framework in Frameworks */,
+				E201A2CC137CC7D000A51A46 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E201A2E3137CC7D000A51A46 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E201A2E8137CC7D000A51A46 /* UIKit.framework in Frameworks */,
+				E201A2E9137CC7D000A51A46 /* Foundation.framework in Frameworks */,
+				E201A2EA137CC7D000A51A46 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E201A2B8137CC7D000A51A46 = {
+			isa = PBXGroup;
+			children = (
+				E201A2CD137CC7D000A51A46 /* OperaPad */,
+				E201A2ED137CC7D000A51A46 /* OperaPadTests */,
+				E201A2C6137CC7D000A51A46 /* Frameworks */,
+				E201A2C4137CC7D000A51A46 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E201A2C4137CC7D000A51A46 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E201A2C3137CC7D000A51A46 /* OperaPad.app */,
+				E201A2E7137CC7D000A51A46 /* OperaPadTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E201A2C6137CC7D000A51A46 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E201A2C7137CC7D000A51A46 /* UIKit.framework */,
+				E201A2C9137CC7D000A51A46 /* Foundation.framework */,
+				E201A2CB137CC7D000A51A46 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E201A2CD137CC7D000A51A46 /* OperaPad */ = {
+			isa = PBXGroup;
+			children = (
+				E201A2D6137CC7D000A51A46 /* OperaPadAppDelegate.h */,
+				E201A2D7137CC7D000A51A46 /* OperaPadAppDelegate.m */,
+				E201A2D9137CC7D000A51A46 /* MainWindow.xib */,
+				E201A2DC137CC7D000A51A46 /* OperaPadViewController.h */,
+				E201A2DD137CC7D000A51A46 /* OperaPadViewController.m */,
+				E201A2DF137CC7D000A51A46 /* OperaPadViewController.xib */,
+				E201A2CE137CC7D000A51A46 /* Supporting Files */,
+			);
+			path = OperaPad;
+			sourceTree = "<group>";
+		};
+		E201A2CE137CC7D000A51A46 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E201A2CF137CC7D000A51A46 /* OperaPad-Info.plist */,
+				E201A2D0137CC7D000A51A46 /* InfoPlist.strings */,
+				E201A2D3137CC7D000A51A46 /* OperaPad-Prefix.pch */,
+				E201A2D4137CC7D000A51A46 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E201A2ED137CC7D000A51A46 /* OperaPadTests */ = {
+			isa = PBXGroup;
+			children = (
+				E201A2F4137CC7D000A51A46 /* OperaPadTests.h */,
+				E201A2F6137CC7D000A51A46 /* OperaPadTests.m */,
+				E201A2EE137CC7D000A51A46 /* Supporting Files */,
+			);
+			path = OperaPadTests;
+			sourceTree = "<group>";
+		};
+		E201A2EE137CC7D000A51A46 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E201A2EF137CC7D000A51A46 /* OperaPadTests-Info.plist */,
+				E201A2F0137CC7D000A51A46 /* InfoPlist.strings */,
+				E201A2F3137CC7D000A51A46 /* OperaPadTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E201A2C2137CC7D000A51A46 /* OperaPad */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E201A2FA137CC7D000A51A46 /* Build configuration list for PBXNativeTarget "OperaPad" */;
+			buildPhases = (
+				E201A2BF137CC7D000A51A46 /* Sources */,
+				E201A2C0137CC7D000A51A46 /* Frameworks */,
+				E201A2C1137CC7D000A51A46 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OperaPad;
+			productName = OperaPad;
+			productReference = E201A2C3137CC7D000A51A46 /* OperaPad.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E201A2E6137CC7D000A51A46 /* OperaPadTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E201A2FD137CC7D000A51A46 /* Build configuration list for PBXNativeTarget "OperaPadTests" */;
+			buildPhases = (
+				E201A2E2137CC7D000A51A46 /* Sources */,
+				E201A2E3137CC7D000A51A46 /* Frameworks */,
+				E201A2E4137CC7D000A51A46 /* Resources */,
+				E201A2E5137CC7D000A51A46 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E201A2EC137CC7D000A51A46 /* PBXTargetDependency */,
+			);
+			name = OperaPadTests;
+			productName = OperaPadTests;
+			productReference = E201A2E7137CC7D000A51A46 /* OperaPadTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E201A2BA137CC7D000A51A46 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "Percolate Studio";
+			};
+			buildConfigurationList = E201A2BD137CC7D000A51A46 /* Build configuration list for PBXProject "OperaPad" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E201A2B8137CC7D000A51A46;
+			productRefGroup = E201A2C4137CC7D000A51A46 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E201A2C2137CC7D000A51A46 /* OperaPad */,
+				E201A2E6137CC7D000A51A46 /* OperaPadTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E201A2C1137CC7D000A51A46 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E201A2D2137CC7D000A51A46 /* InfoPlist.strings in Resources */,
+				E201A2DB137CC7D000A51A46 /* MainWindow.xib in Resources */,
+				E201A2E1137CC7D000A51A46 /* OperaPadViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E201A2E4137CC7D000A51A46 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E201A2F2137CC7D000A51A46 /* InfoPlist.strings in Resources */,
+				E201A2F5137CC7D000A51A46 /* OperaPadTests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E201A2E5137CC7D000A51A46 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E201A2BF137CC7D000A51A46 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E201A2D5137CC7D000A51A46 /* main.m in Sources */,
+				E201A2D8137CC7D000A51A46 /* OperaPadAppDelegate.m in Sources */,
+				E201A2DE137CC7D000A51A46 /* OperaPadViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E201A2E2137CC7D000A51A46 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E201A2F7137CC7D000A51A46 /* OperaPadTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E201A2EC137CC7D000A51A46 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E201A2C2137CC7D000A51A46 /* OperaPad */;
+			targetProxy = E201A2EB137CC7D000A51A46 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E201A2D0137CC7D000A51A46 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E201A2D1137CC7D000A51A46 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		E201A2D9137CC7D000A51A46 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E201A2DA137CC7D000A51A46 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		E201A2DF137CC7D000A51A46 /* OperaPadViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E201A2E0137CC7D000A51A46 /* en */,
+			);
+			name = OperaPadViewController.xib;
+			sourceTree = "<group>";
+		};
+		E201A2F0137CC7D000A51A46 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E201A2F1137CC7D000A51A46 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E201A2F8137CC7D000A51A46 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		E201A2F9137CC7D000A51A46 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+		E201A2FB137CC7D000A51A46 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OperaPad/OperaPad-Prefix.pch";
+				INFOPLIST_FILE = "OperaPad/OperaPad-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E201A2FC137CC7D000A51A46 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OperaPad/OperaPad-Prefix.pch";
+				INFOPLIST_FILE = "OperaPad/OperaPad-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		E201A2FE137CC7D000A51A46 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/OperaPad.app/OperaPad";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OperaPadTests/OperaPadTests-Prefix.pch";
+				INFOPLIST_FILE = "OperaPadTests/OperaPadTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		E201A2FF137CC7D000A51A46 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/OperaPad.app/OperaPad";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OperaPadTests/OperaPadTests-Prefix.pch";
+				INFOPLIST_FILE = "OperaPadTests/OperaPadTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E201A2BD137CC7D000A51A46 /* Build configuration list for PBXProject "OperaPad" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E201A2F8137CC7D000A51A46 /* Debug */,
+				E201A2F9137CC7D000A51A46 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E201A2FA137CC7D000A51A46 /* Build configuration list for PBXNativeTarget "OperaPad" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E201A2FB137CC7D000A51A46 /* Debug */,
+				E201A2FC137CC7D000A51A46 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		E201A2FD137CC7D000A51A46 /* Build configuration list for PBXNativeTarget "OperaPadTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E201A2FE137CC7D000A51A46 /* Debug */,
+				E201A2FF137CC7D000A51A46 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E201A2BA137CC7D000A51A46 /* Project object */;
+}
