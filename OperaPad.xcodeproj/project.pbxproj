@@ -22,6 +22,7 @@
 		E201A2F2137CC7D000A51A46 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E201A2F0137CC7D000A51A46 /* InfoPlist.strings */; };
 		E201A2F5137CC7D000A51A46 /* OperaPadTests.h in Resources */ = {isa = PBXBuildFile; fileRef = E201A2F4137CC7D000A51A46 /* OperaPadTests.h */; };
 		E201A2F7137CC7D000A51A46 /* OperaPadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E201A2F6137CC7D000A51A46 /* OperaPadTests.m */; };
+		E201A301137CCC3800A51A46 /* all.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E201A300137CCC3800A51A46 /* all.pdf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,22 +40,23 @@
 		E201A2C7137CC7D000A51A46 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E201A2C9137CC7D000A51A46 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E201A2CB137CC7D000A51A46 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		E201A2CF137CC7D000A51A46 /* OperaPad-Info.plist */ = {isa = PBXFileReference; path = "OperaPad-Info.plist"; sourceTree = "<group>"; };
+		E201A2CF137CC7D000A51A46 /* OperaPad-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OperaPad-Info.plist"; sourceTree = "<group>"; };
 		E201A2D1137CC7D000A51A46 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		E201A2D3137CC7D000A51A46 /* OperaPad-Prefix.pch */ = {isa = PBXFileReference; path = "OperaPad-Prefix.pch"; sourceTree = "<group>"; };
+		E201A2D3137CC7D000A51A46 /* OperaPad-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OperaPad-Prefix.pch"; sourceTree = "<group>"; };
 		E201A2D4137CC7D000A51A46 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		E201A2D6137CC7D000A51A46 /* OperaPadAppDelegate.h */ = {isa = PBXFileReference; path = OperaPadAppDelegate.h; sourceTree = "<group>"; };
+		E201A2D6137CC7D000A51A46 /* OperaPadAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OperaPadAppDelegate.h; sourceTree = "<group>"; };
 		E201A2D7137CC7D000A51A46 /* OperaPadAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OperaPadAppDelegate.m; sourceTree = "<group>"; };
 		E201A2DA137CC7D000A51A46 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		E201A2DC137CC7D000A51A46 /* OperaPadViewController.h */ = {isa = PBXFileReference; path = OperaPadViewController.h; sourceTree = "<group>"; };
+		E201A2DC137CC7D000A51A46 /* OperaPadViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OperaPadViewController.h; sourceTree = "<group>"; };
 		E201A2DD137CC7D000A51A46 /* OperaPadViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OperaPadViewController.m; sourceTree = "<group>"; };
 		E201A2E0137CC7D000A51A46 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/OperaPadViewController.xib; sourceTree = "<group>"; };
 		E201A2E7137CC7D000A51A46 /* OperaPadTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OperaPadTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E201A2EF137CC7D000A51A46 /* OperaPadTests-Info.plist */ = {isa = PBXFileReference; path = "OperaPadTests-Info.plist"; sourceTree = "<group>"; };
+		E201A2EF137CC7D000A51A46 /* OperaPadTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OperaPadTests-Info.plist"; sourceTree = "<group>"; };
 		E201A2F1137CC7D000A51A46 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		E201A2F3137CC7D000A51A46 /* OperaPadTests-Prefix.pch */ = {isa = PBXFileReference; path = "OperaPadTests-Prefix.pch"; sourceTree = "<group>"; };
+		E201A2F3137CC7D000A51A46 /* OperaPadTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OperaPadTests-Prefix.pch"; sourceTree = "<group>"; };
 		E201A2F4137CC7D000A51A46 /* OperaPadTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OperaPadTests.h; sourceTree = "<group>"; };
 		E201A2F6137CC7D000A51A46 /* OperaPadTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OperaPadTests.m; sourceTree = "<group>"; };
+		E201A300137CCC3800A51A46 /* all.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = all.pdf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 		E201A2CE137CC7D000A51A46 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E201A300137CCC3800A51A46 /* all.pdf */,
 				E201A2CF137CC7D000A51A46 /* OperaPad-Info.plist */,
 				E201A2D0137CC7D000A51A46 /* InfoPlist.strings */,
 				E201A2D3137CC7D000A51A46 /* OperaPad-Prefix.pch */,
@@ -228,6 +231,7 @@
 				E201A2D2137CC7D000A51A46 /* InfoPlist.strings in Resources */,
 				E201A2DB137CC7D000A51A46 /* MainWindow.xib in Resources */,
 				E201A2E1137CC7D000A51A46 /* OperaPadViewController.xib in Resources */,
+				E201A301137CCC3800A51A46 /* all.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
