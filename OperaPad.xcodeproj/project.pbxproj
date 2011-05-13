@@ -22,7 +22,7 @@
 		E201A2F2137CC7D000A51A46 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E201A2F0137CC7D000A51A46 /* InfoPlist.strings */; };
 		E201A2F5137CC7D000A51A46 /* OperaPadTests.h in Resources */ = {isa = PBXBuildFile; fileRef = E201A2F4137CC7D000A51A46 /* OperaPadTests.h */; };
 		E201A2F7137CC7D000A51A46 /* OperaPadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E201A2F6137CC7D000A51A46 /* OperaPadTests.m */; };
-		E201A301137CCC3800A51A46 /* all.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E201A300137CCC3800A51A46 /* all.pdf */; };
+		E201A301137CCC3800A51A46 /* tester.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E201A300137CCC3800A51A46 /* tester.pdf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +56,7 @@
 		E201A2F3137CC7D000A51A46 /* OperaPadTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OperaPadTests-Prefix.pch"; sourceTree = "<group>"; };
 		E201A2F4137CC7D000A51A46 /* OperaPadTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OperaPadTests.h; sourceTree = "<group>"; };
 		E201A2F6137CC7D000A51A46 /* OperaPadTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OperaPadTests.m; sourceTree = "<group>"; };
-		E201A300137CCC3800A51A46 /* all.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = all.pdf; sourceTree = "<group>"; };
+		E201A300137CCC3800A51A46 /* tester.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = tester.pdf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +115,7 @@
 		E201A2CD137CC7D000A51A46 /* OperaPad */ = {
 			isa = PBXGroup;
 			children = (
+				E201A302137CDFE200A51A46 /* Scores */,
 				E201A2D6137CC7D000A51A46 /* OperaPadAppDelegate.h */,
 				E201A2D7137CC7D000A51A46 /* OperaPadAppDelegate.m */,
 				E201A2D9137CC7D000A51A46 /* MainWindow.xib */,
@@ -129,7 +130,6 @@
 		E201A2CE137CC7D000A51A46 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				E201A300137CCC3800A51A46 /* all.pdf */,
 				E201A2CF137CC7D000A51A46 /* OperaPad-Info.plist */,
 				E201A2D0137CC7D000A51A46 /* InfoPlist.strings */,
 				E201A2D3137CC7D000A51A46 /* OperaPad-Prefix.pch */,
@@ -156,6 +156,14 @@
 				E201A2F3137CC7D000A51A46 /* OperaPadTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E201A302137CDFE200A51A46 /* Scores */ = {
+			isa = PBXGroup;
+			children = (
+				E201A300137CCC3800A51A46 /* tester.pdf */,
+			);
+			path = Scores;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,7 +239,7 @@
 				E201A2D2137CC7D000A51A46 /* InfoPlist.strings in Resources */,
 				E201A2DB137CC7D000A51A46 /* MainWindow.xib in Resources */,
 				E201A2E1137CC7D000A51A46 /* OperaPadViewController.xib in Resources */,
-				E201A301137CCC3800A51A46 /* all.pdf in Resources */,
+				E201A301137CCC3800A51A46 /* tester.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
