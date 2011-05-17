@@ -9,9 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface OperaPadViewController : UIViewController {
-    
-    UIImageView *scoreImage;
+    UIWebView *webView;
 }
-@property (nonatomic, retain) IBOutlet UIImageView *scoreImage;
+@property (nonatomic, retain) IBOutlet UIWebView *webView;
 
 @end

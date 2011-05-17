@@ -9,11 +9,11 @@
 #import "OperaPadViewController.h"
 
 @implementation OperaPadViewController
-@synthesize scoreImage;
+@synthesize webView;
 
 - (void)dealloc
 {
-    [scoreImage release];
+    [webView release];
     [super dealloc];
 }
 
@@ -31,25 +31,30 @@
  
 - (void)viewDidLoad
 {
-    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
-    swipe.direction = UISwipeGestureRecognizerDirectionLeft;
-    [self.scoreImage addGestureRecognizer:swipe];
-    [swipe release];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"puccini" ofType:@"pdf"];
+    NSURL *url = [NSURL fileURLWithPath:path];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [webView loadRequest:request];
+    
+//    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
+//    swipe.direction = UISwipeGestureRecognizerDirectionLeft;
+//    [self.scoreImage addGestureRecognizer:swipe];
+//    [swipe release];
     
     [super viewDidLoad];
 }
 
-- (IBAction) handleSwipe:(UISwipeGestureRecognizer *)sender {
-    NSString* newImageName = [[NSBundle mainBundle] pathForResource:@"puccini-2" ofType:@"png"];
-    
-    UIImage * newImage = [[UIImage alloc] initWithContentsOfFile:newImageName]; 
-    scoreImage.image = newImage;
-    [newImage release];
-}
+//- (IBAction) handleSwipe:(UISwipeGestureRecognizer *)sender {
+//    NSString* newImageName = [[NSBundle mainBundle] pathForResource:@"puccini-2" ofType:@"png"];
+//    
+//    UIImage * newImage = [[UIImage alloc] initWithContentsOfFile:newImageName]; 
+//    scoreImage.image = newImage;
+//    [newImage release];
+//}
 
 - (void)viewDidUnload
 {
-    [self setScoreImage:nil];
+    [self setWebView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

@@ -22,9 +22,10 @@
 		E201A2F2137CC7D000A51A46 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E201A2F0137CC7D000A51A46 /* InfoPlist.strings */; };
 		E201A2F5137CC7D000A51A46 /* OperaPadTests.h in Resources */ = {isa = PBXBuildFile; fileRef = E201A2F4137CC7D000A51A46 /* OperaPadTests.h */; };
 		E201A2F7137CC7D000A51A46 /* OperaPadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E201A2F6137CC7D000A51A46 /* OperaPadTests.m */; };
-		E2C6E4DB137CEC27005DB3CE /* puccini-1.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C6E4D8137CEC27005DB3CE /* puccini-1.png */; };
-		E2C6E4DC137CEC27005DB3CE /* puccini-2.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C6E4D9137CEC27005DB3CE /* puccini-2.png */; };
-		E2C6E4DD137CEC27005DB3CE /* puccini-3.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C6E4DA137CEC27005DB3CE /* puccini-3.png */; };
+		E203CBC9138204C300F4A0A8 /* puccini.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E203CBC8138204C300F4A0A8 /* puccini.pdf */; };
+		E255856C138204EE001A168C /* puccini-1.png in Resources */ = {isa = PBXBuildFile; fileRef = E2558569138204EE001A168C /* puccini-1.png */; };
+		E255856D138204EE001A168C /* puccini-2.png in Resources */ = {isa = PBXBuildFile; fileRef = E255856A138204EE001A168C /* puccini-2.png */; };
+		E255856E138204EE001A168C /* puccini-3.png in Resources */ = {isa = PBXBuildFile; fileRef = E255856B138204EE001A168C /* puccini-3.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,9 +59,10 @@
 		E201A2F3137CC7D000A51A46 /* OperaPadTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OperaPadTests-Prefix.pch"; sourceTree = "<group>"; };
 		E201A2F4137CC7D000A51A46 /* OperaPadTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OperaPadTests.h; sourceTree = "<group>"; };
 		E201A2F6137CC7D000A51A46 /* OperaPadTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OperaPadTests.m; sourceTree = "<group>"; };
-		E2C6E4D8137CEC27005DB3CE /* puccini-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "puccini-1.png"; sourceTree = SOURCE_ROOT; };
-		E2C6E4D9137CEC27005DB3CE /* puccini-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "puccini-2.png"; sourceTree = SOURCE_ROOT; };
-		E2C6E4DA137CEC27005DB3CE /* puccini-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "puccini-3.png"; sourceTree = SOURCE_ROOT; };
+		E203CBC8138204C300F4A0A8 /* puccini.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = puccini.pdf; sourceTree = "<group>"; };
+		E2558569138204EE001A168C /* puccini-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "puccini-1.png"; sourceTree = "<group>"; };
+		E255856A138204EE001A168C /* puccini-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "puccini-2.png"; sourceTree = "<group>"; };
+		E255856B138204EE001A168C /* puccini-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "puccini-3.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 		E201A2CD137CC7D000A51A46 /* OperaPad */ = {
 			isa = PBXGroup;
 			children = (
+				E201A302137CDFE200A51A46 /* Scores */,
 				E201A2D6137CC7D000A51A46 /* OperaPadAppDelegate.h */,
 				E201A2D7137CC7D000A51A46 /* OperaPadAppDelegate.m */,
 				E201A2D9137CC7D000A51A46 /* MainWindow.xib */,
@@ -133,7 +136,6 @@
 		E201A2CE137CC7D000A51A46 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				E201A302137CDFE200A51A46 /* Scores */,
 				E201A2CF137CC7D000A51A46 /* OperaPad-Info.plist */,
 				E201A2D0137CC7D000A51A46 /* InfoPlist.strings */,
 				E201A2D3137CC7D000A51A46 /* OperaPad-Prefix.pch */,
@@ -173,9 +175,10 @@
 		E2F50F4B137CEBE400BBC80B /* Puccini */ = {
 			isa = PBXGroup;
 			children = (
-				E2C6E4D8137CEC27005DB3CE /* puccini-1.png */,
-				E2C6E4D9137CEC27005DB3CE /* puccini-2.png */,
-				E2C6E4DA137CEC27005DB3CE /* puccini-3.png */,
+				E2558569138204EE001A168C /* puccini-1.png */,
+				E255856A138204EE001A168C /* puccini-2.png */,
+				E255856B138204EE001A168C /* puccini-3.png */,
+				E203CBC8138204C300F4A0A8 /* puccini.pdf */,
 			);
 			name = Puccini;
 			sourceTree = "<group>";
@@ -253,9 +256,10 @@
 				E201A2D2137CC7D000A51A46 /* InfoPlist.strings in Resources */,
 				E201A2DB137CC7D000A51A46 /* MainWindow.xib in Resources */,
 				E201A2E1137CC7D000A51A46 /* OperaPadViewController.xib in Resources */,
-				E2C6E4DB137CEC27005DB3CE /* puccini-1.png in Resources */,
-				E2C6E4DC137CEC27005DB3CE /* puccini-2.png in Resources */,
-				E2C6E4DD137CEC27005DB3CE /* puccini-3.png in Resources */,
+				E203CBC9138204C300F4A0A8 /* puccini.pdf in Resources */,
+				E255856C138204EE001A168C /* puccini-1.png in Resources */,
+				E255856D138204EE001A168C /* puccini-2.png in Resources */,
+				E255856E138204EE001A168C /* puccini-3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
