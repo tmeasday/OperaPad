@@ -7,14 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+@class DrawingView;
 
 @interface OperaPadViewController : UIViewController {
     UIScrollView *scrollView;
     UIImageView *scoreImage;
-    UIImageView *overlayImage;
+    DrawingView *overlayView;
 }
 @property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, retain) IBOutlet UIImageView *scoreImage;
-@property (nonatomic, retain) IBOutlet UIImageView *overlayImage;
+@property (nonatomic, retain) IBOutlet DrawingView *overlayView;
 
 @end

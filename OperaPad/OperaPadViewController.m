@@ -10,14 +10,14 @@
 
 @implementation OperaPadViewController
 @synthesize scoreImage;
-@synthesize overlayImage;
+@synthesize overlayView;
 @synthesize scrollView;
 
 - (void)dealloc
 {
     [scrollView release];
     [scoreImage release];
-    [overlayImage release];
+    [overlayView release];
     [super dealloc];
 }
 
@@ -45,7 +45,7 @@
 {
     [self setScrollView:nil];
     [self setScoreImage:nil];
-    [self setOverlayImage:nil];
+    [self setOverlayView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
