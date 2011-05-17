@@ -43,16 +43,16 @@
 				<int key="NSvFlags">274</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<object class="IBUIScrollView" id="133082140">
+					<object class="IBUIScrollView" id="841129407">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">274</int>
 						<object class="NSMutableArray" key="NSSubviews">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBUIImageView" id="896115875">
-								<reference key="NSNextResponder" ref="133082140"/>
+							<object class="IBUIImageView" id="569943471">
+								<reference key="NSNextResponder" ref="841129407"/>
 								<int key="NSvFlags">274</int>
 								<string key="NSFrameSize">{1024, 748}</string>
-								<reference key="NSSuperview" ref="133082140"/>
+								<reference key="NSSuperview" ref="841129407"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView"/>
 								<int key="IBUIContentMode">7</int>
@@ -63,11 +63,25 @@
 									<string key="NSResourceName">pucinni-all.png</string>
 								</object>
 							</object>
+							<object class="IBUIImageView" id="426915665">
+								<reference key="NSNextResponder" ref="841129407"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{0, -22}, {542, 451}}</string>
+								<reference key="NSSuperview" ref="841129407"/>
+								<reference key="NSWindow"/>
+								<int key="IBUIContentMode">7</int>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">overlay-test.png</string>
+								</object>
+							</object>
 						</object>
 						<string key="NSFrameSize">{1024, 748}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="896115875"/>
+						<reference key="NSNextKeyView" ref="569943471"/>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -80,7 +94,7 @@
 				<string key="NSFrame">{{0, 20}, {1024, 748}}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="133082140"/>
+				<reference key="NSNextKeyView" ref="841129407"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
 					<bytes key="NSRGB">MSAxIDEAA</bytes>
@@ -102,7 +116,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">scoreImage</string>
 						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="896115875"/>
+						<reference key="destination" ref="569943471"/>
 					</object>
 					<int key="connectionID">11</int>
 				</object>
@@ -110,7 +124,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">scrollView</string>
 						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="133082140"/>
+						<reference key="destination" ref="841129407"/>
 					</object>
 					<int key="connectionID">12</int>
 				</object>
@@ -121,6 +135,14 @@
 						<reference key="destination" ref="766721923"/>
 					</object>
 					<int key="connectionID">13</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">overlayImage</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="426915665"/>
+					</object>
+					<int key="connectionID">17</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -148,24 +170,31 @@
 						<reference key="object" ref="766721923"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="133082140"/>
+							<reference ref="841129407"/>
 						</object>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">View</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">8</int>
-						<reference key="object" ref="133082140"/>
+						<reference key="object" ref="841129407"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="896115875"/>
+							<reference ref="569943471"/>
+							<reference ref="426915665"/>
 						</object>
 						<reference key="parent" ref="766721923"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">10</int>
-						<reference key="object" ref="896115875"/>
-						<reference key="parent" ref="133082140"/>
+						<reference key="object" ref="569943471"/>
+						<reference key="parent" ref="841129407"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">16</int>
+						<reference key="object" ref="426915665"/>
+						<reference key="parent" ref="841129407"/>
+						<string key="objectName">Image View - overlay-test.png</string>
 					</object>
 				</object>
 			</object>
@@ -176,6 +205,7 @@
 					<string>-1.CustomClassName</string>
 					<string>-2.CustomClassName</string>
 					<string>10.IBPluginDependency</string>
+					<string>16.IBPluginDependency</string>
 					<string>2.IBEditorWindowLastContentRect</string>
 					<string>2.IBPluginDependency</string>
 					<string>8.IBPluginDependency</string>
@@ -184,6 +214,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>OperaPadViewController</string>
 					<string>UIResponder</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>{{513, 0}, {783, 856}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -202,7 +233,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">13</int>
+			<int key="maxID">17</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -214,11 +245,13 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>overlayImage</string>
 							<string>scoreImage</string>
 							<string>scrollView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>UIImageView</string>
 							<string>UIImageView</string>
 							<string>UIScrollView</string>
 						</object>
@@ -227,11 +260,16 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>overlayImage</string>
 							<string>scoreImage</string>
 							<string>scrollView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">overlayImage</string>
+								<string key="candidateClassName">UIImageView</string>
+							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">scoreImage</string>
 								<string key="candidateClassName">UIImageView</string>
@@ -262,8 +300,17 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">pucinni-all.png</string>
-			<string key="NS.object.0">{3072, 768}</string>
+			<bool key="EncodedWithXMLCoder">YES</bool>
+			<object class="NSArray" key="dict.sortedKeys">
+				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>overlay-test.png</string>
+				<string>pucinni-all.png</string>
+			</object>
+			<object class="NSMutableArray" key="dict.values">
+				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>{3072, 768}</string>
+				<string>{3072, 768}</string>
+			</object>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">301</string>
 	</data>
