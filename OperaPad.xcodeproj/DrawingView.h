@@ -11,6 +11,9 @@
 
 @interface DrawingView : UIImageView {
     CGPoint lastPoint;
+    BOOL disabled;
 }
+
+@property (readwrite, assign, nonatomic) BOOL disabled;
 
 @end
