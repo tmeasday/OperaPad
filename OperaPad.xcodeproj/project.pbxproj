@@ -23,6 +23,7 @@
 		E201A2F5137CC7D000A51A46 /* OperaPadTests.h in Resources */ = {isa = PBXBuildFile; fileRef = E201A2F4137CC7D000A51A46 /* OperaPadTests.h */; };
 		E201A2F7137CC7D000A51A46 /* OperaPadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E201A2F6137CC7D000A51A46 /* OperaPadTests.m */; };
 		E203CBC9138204C300F4A0A8 /* puccini.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E203CBC8138204C300F4A0A8 /* puccini.pdf */; };
+		E2264F9913821D6100D4ABF4 /* pucinni-all.png in Resources */ = {isa = PBXBuildFile; fileRef = E2264F9813821D6100D4ABF4 /* pucinni-all.png */; };
 		E255856C138204EE001A168C /* puccini-1.png in Resources */ = {isa = PBXBuildFile; fileRef = E2558569138204EE001A168C /* puccini-1.png */; };
 		E255856D138204EE001A168C /* puccini-2.png in Resources */ = {isa = PBXBuildFile; fileRef = E255856A138204EE001A168C /* puccini-2.png */; };
 		E255856E138204EE001A168C /* puccini-3.png in Resources */ = {isa = PBXBuildFile; fileRef = E255856B138204EE001A168C /* puccini-3.png */; };
@@ -60,6 +61,7 @@
 		E201A2F4137CC7D000A51A46 /* OperaPadTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OperaPadTests.h; sourceTree = "<group>"; };
 		E201A2F6137CC7D000A51A46 /* OperaPadTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OperaPadTests.m; sourceTree = "<group>"; };
 		E203CBC8138204C300F4A0A8 /* puccini.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = puccini.pdf; sourceTree = "<group>"; };
+		E2264F9813821D6100D4ABF4 /* pucinni-all.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pucinni-all.png"; sourceTree = "<group>"; };
 		E2558569138204EE001A168C /* puccini-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "puccini-1.png"; sourceTree = "<group>"; };
 		E255856A138204EE001A168C /* puccini-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "puccini-2.png"; sourceTree = "<group>"; };
 		E255856B138204EE001A168C /* puccini-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "puccini-3.png"; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				E2558569138204EE001A168C /* puccini-1.png */,
 				E255856A138204EE001A168C /* puccini-2.png */,
 				E255856B138204EE001A168C /* puccini-3.png */,
+				E2264F9813821D6100D4ABF4 /* pucinni-all.png */,
 				E203CBC8138204C300F4A0A8 /* puccini.pdf */,
 			);
 			name = Puccini;
@@ -260,6 +263,7 @@
 				E255856C138204EE001A168C /* puccini-1.png in Resources */,
 				E255856D138204EE001A168C /* puccini-2.png in Resources */,
 				E255856E138204EE001A168C /* puccini-3.png in Resources */,
+				E2264F9913821D6100D4ABF4 /* pucinni-all.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,11 +9,13 @@
 #import "OperaPadViewController.h"
 
 @implementation OperaPadViewController
-@synthesize webView;
+@synthesize scoreImage;
+@synthesize scrollView;
 
 - (void)dealloc
 {
-    [webView release];
+    [scoreImage release];
+    [scrollView release];
     [super dealloc];
 }
 
@@ -31,30 +33,16 @@
  
 - (void)viewDidLoad
 {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"puccini" ofType:@"pdf"];
-    NSURL *url = [NSURL fileURLWithPath:path];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    [webView loadRequest:request];
-    
-//    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
-//    swipe.direction = UISwipeGestureRecognizerDirectionLeft;
-//    [self.scoreImage addGestureRecognizer:swipe];
-//    [swipe release];
-    
     [super viewDidLoad];
+    
+    int nPages = 3;
+    scrollView.contentSize = CGSizeMake(nPages*1024,768-20);
 }
-
-//- (IBAction) handleSwipe:(UISwipeGestureRecognizer *)sender {
-//    NSString* newImageName = [[NSBundle mainBundle] pathForResource:@"puccini-2" ofType:@"png"];
-//    
-//    UIImage * newImage = [[UIImage alloc] initWithContentsOfFile:newImageName]; 
-//    scoreImage.image = newImage;
-//    [newImage release];
-//}
 
 - (void)viewDidUnload
 {
-    [self setWebView:nil];
+    [self setScoreImage:nil];
+    [self setScrollView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
