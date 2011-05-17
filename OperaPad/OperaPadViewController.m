@@ -9,9 +9,11 @@
 #import "OperaPadViewController.h"
 
 @implementation OperaPadViewController
+@synthesize scoreImage;
 
 - (void)dealloc
 {
+    [scoreImage release];
     [super dealloc];
 }
 
@@ -25,16 +27,29 @@
 
 #pragma mark - View lifecycle
 
-/*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+ 
 - (void)viewDidLoad
 {
+    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
+    swipe.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.scoreImage addGestureRecognizer:swipe];
+    [swipe release];
+    
     [super viewDidLoad];
 }
-*/
+
+- (IBAction) handleSwipe:(UISwipeGestureRecognizer *)sender {
+    NSString* newImageName = [[NSBundle mainBundle] pathForResource:@"puccini-2" ofType:@"png"];
+    
+    UIImage * newImage = [[UIImage alloc] initWithContentsOfFile:newImageName]; 
+    scoreImage.image = newImage;
+    [newImage release];
+}
 
 - (void)viewDidUnload
 {
+    [self setScoreImage:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

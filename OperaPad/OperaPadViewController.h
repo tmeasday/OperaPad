@@ -10,6 +10,8 @@
 
 @interface OperaPadViewController : UIViewController {
     
+    UIImageView *scoreImage;
 }
+@property (nonatomic, retain) IBOutlet UIImageView *scoreImage;
 
 @end
