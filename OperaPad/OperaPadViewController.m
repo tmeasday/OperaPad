@@ -46,6 +46,7 @@
     // rotate the modeChooser vertical
     modeChooser.transform = CGAffineTransformTranslate(CGAffineTransformMakeRotation(M_PI / 2.0), modeChooser.frame.size.width/2,0.0);
     
+    
     // read mode
     scrollView.scrollEnabled = YES;
     scrollView.pagingEnabled = YES;
