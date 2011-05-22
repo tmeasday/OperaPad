@@ -42,6 +42,9 @@
     
     int nPages = 3;
     scrollView.contentSize = CGSizeMake(nPages*1024,768-20);
+        
+    // rotate the modeChooser vertical
+    modeChooser.transform = CGAffineTransformTranslate(CGAffineTransformMakeRotation(M_PI / 2.0), modeChooser.frame.size.width/2,0.0);
     
     // read mode
     scrollView.scrollEnabled = YES;

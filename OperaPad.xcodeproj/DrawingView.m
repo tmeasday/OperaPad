@@ -42,7 +42,7 @@
         [self.image drawInRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
         
         CGContextSetLineCap(context, kCGLineCapRound);
-        CGContextSetLineWidth(context, 5.0);
+        CGContextSetLineWidth(context, 2.0);
         CGContextSetRGBStrokeColor(context, 0.0, 0.0, 0.0, 1.0);
         CGContextBeginPath(context);
         CGContextMoveToPoint(context, lastPoint.x, lastPoint.y);

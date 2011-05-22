@@ -29,6 +29,8 @@
 		E255856C138204EE001A168C /* puccini-1.png in Resources */ = {isa = PBXBuildFile; fileRef = E2558569138204EE001A168C /* puccini-1.png */; };
 		E255856D138204EE001A168C /* puccini-2.png in Resources */ = {isa = PBXBuildFile; fileRef = E255856A138204EE001A168C /* puccini-2.png */; };
 		E255856E138204EE001A168C /* puccini-3.png in Resources */ = {isa = PBXBuildFile; fileRef = E255856B138204EE001A168C /* puccini-3.png */; };
+		E2C0458B1388DBD7006D9CD1 /* hand.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C0458A1388DBD7006D9CD1 /* hand.png */; };
+		E2C0458D1388DF54006D9CD1 /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C0458C1388DF54006D9CD1 /* pencil.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,8 @@
 		E2558569138204EE001A168C /* puccini-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "puccini-1.png"; sourceTree = "<group>"; };
 		E255856A138204EE001A168C /* puccini-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "puccini-2.png"; sourceTree = "<group>"; };
 		E255856B138204EE001A168C /* puccini-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "puccini-3.png"; sourceTree = "<group>"; };
+		E2C0458A1388DBD7006D9CD1 /* hand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hand.png; sourceTree = "<group>"; };
+		E2C0458C1388DF54006D9CD1 /* pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pencil.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +134,7 @@
 		E201A2CD137CC7D000A51A46 /* OperaPad */ = {
 			isa = PBXGroup;
 			children = (
+				E2C045861388DB1F006D9CD1 /* Images */,
 				E201A302137CDFE200A51A46 /* Scores */,
 				E201A2D6137CC7D000A51A46 /* OperaPadAppDelegate.h */,
 				E201A2D7137CC7D000A51A46 /* OperaPadAppDelegate.m */,
@@ -179,6 +184,15 @@
 				E2F50F4B137CEBE400BBC80B /* Puccini */,
 			);
 			path = Scores;
+			sourceTree = "<group>";
+		};
+		E2C045861388DB1F006D9CD1 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				E2C0458C1388DF54006D9CD1 /* pencil.png */,
+				E2C0458A1388DBD7006D9CD1 /* hand.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		E2F50F4B137CEBE400BBC80B /* Puccini */ = {
@@ -273,6 +287,8 @@
 				E255856E138204EE001A168C /* puccini-3.png in Resources */,
 				E2264F9913821D6100D4ABF4 /* pucinni-all.png in Resources */,
 				E2264F9C13822CF400D4ABF4 /* overlay-test.png in Resources */,
+				E2C0458B1388DBD7006D9CD1 /* hand.png in Resources */,
+				E2C0458D1388DF54006D9CD1 /* pencil.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
