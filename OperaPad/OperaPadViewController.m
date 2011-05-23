@@ -7,7 +7,7 @@
 //
 
 #import "OperaPadViewController.h"
-#import "DrawingView.h"
+#import "PaintingView.h"
 
 @implementation OperaPadViewController
 @synthesize scoreImage;
@@ -44,13 +44,14 @@
     scrollView.contentSize = CGSizeMake(nPages*1024,768-20);
         
     // rotate the modeChooser vertical
-    modeChooser.transform = CGAffineTransformTranslate(CGAffineTransformMakeRotation(M_PI / 2.0), modeChooser.frame.size.width/2,0.0);
+    // modeChooser.transform = CGAffineTransformTranslate(CGAffineTransformMakeRotation(M_PI / 2.0), modeChooser.frame.size.width/2,0.0);
     
     
     // read mode
     scrollView.scrollEnabled = YES;
     scrollView.pagingEnabled = YES;
-    overlayView.disabled = YES;
+    
+    [overlayView setBrushColorWithRed: 0.0 green:0.5 blue:0.5];
 }
 
 - (void)viewDidUnload
@@ -71,16 +72,22 @@
 }
 
 - (IBAction)modeChanged:(id)sender {
-    if (modeChooser.selectedSegmentIndex == 0) {
-        // read mode
-        scrollView.scrollEnabled = YES;
-        scrollView.pagingEnabled = YES;
-        overlayView.disabled = YES;
-    } else {
-        // write mode
-        scrollView.scrollEnabled = NO;
-        scrollView.pagingEnabled = NO;
-        overlayView.disabled = NO;
-    }
+    switch (modeChooser.selectedSegmentIndex) {
+        case 0:
+            scrollView.scrollEnabled = YES;
+            scrollView.pagingEnabled = YES;            
+            break;
+        case 1:
+            scrollView.scrollEnabled = NO;
+            scrollView.pagingEnabled = NO;
+            break;
+        case 4:
+            [overlayView erase];
+            modeChooser.selectedSegmentIndex = 1;
+//            scrollView.scrollEnabled = NO;
+//            scrollView.pagingEnabled = NO;
+        default:
+            break;
+    }    
 }
 @end

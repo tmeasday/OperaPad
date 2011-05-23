@@ -34,6 +34,10 @@
 		E2C045971389D59C006D9CD1 /* eraser.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C045961389D59C006D9CD1 /* eraser.png */; };
 		E2C045991389D79A006D9CD1 /* undo.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C045981389D79A006D9CD1 /* undo.png */; };
 		E2C0459B1389D8E4006D9CD1 /* rag.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C0459A1389D8E4006D9CD1 /* rag.png */; };
+		E2C045A5138A11E7006D9CD1 /* Particle.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C045A4138A11E7006D9CD1 /* Particle.png */; };
+		E2C045A8138A1207006D9CD1 /* PaintingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C045A7138A1207006D9CD1 /* PaintingView.m */; };
+		E2C045AA138A3785006D9CD1 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2C045A9138A3785006D9CD1 /* OpenGLES.framework */; };
+		E2C045AC138A37EC006D9CD1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2C045AB138A37EC006D9CD1 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,8 +74,8 @@
 		E203CBC8138204C300F4A0A8 /* puccini.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = puccini.pdf; sourceTree = "<group>"; };
 		E2264F9813821D6100D4ABF4 /* pucinni-all.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pucinni-all.png"; sourceTree = "<group>"; };
 		E2264F9B13822CF400D4ABF4 /* overlay-test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "overlay-test.png"; sourceTree = "<group>"; };
-		E2264F9F1382335D00D4ABF4 /* DrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrawingView.h; path = OperaPad.xcodeproj/DrawingView.h; sourceTree = "<group>"; };
-		E2264FA01382335D00D4ABF4 /* DrawingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DrawingView.m; path = OperaPad.xcodeproj/DrawingView.m; sourceTree = "<group>"; };
+		E2264F9F1382335D00D4ABF4 /* DrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrawingView.h; path = OperaPad.xcodeproj/DrawingView.h; sourceTree = SOURCE_ROOT; };
+		E2264FA01382335D00D4ABF4 /* DrawingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DrawingView.m; path = OperaPad.xcodeproj/DrawingView.m; sourceTree = SOURCE_ROOT; };
 		E2558569138204EE001A168C /* puccini-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "puccini-1.png"; sourceTree = "<group>"; };
 		E255856A138204EE001A168C /* puccini-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "puccini-2.png"; sourceTree = "<group>"; };
 		E255856B138204EE001A168C /* puccini-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "puccini-3.png"; sourceTree = "<group>"; };
@@ -80,6 +84,11 @@
 		E2C045961389D59C006D9CD1 /* eraser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eraser.png; sourceTree = "<group>"; };
 		E2C045981389D79A006D9CD1 /* undo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = undo.png; sourceTree = "<group>"; };
 		E2C0459A1389D8E4006D9CD1 /* rag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rag.png; sourceTree = "<group>"; };
+		E2C045A4138A11E7006D9CD1 /* Particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Particle.png; sourceTree = "<group>"; };
+		E2C045A6138A1207006D9CD1 /* PaintingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaintingView.h; path = ../PaintingView.h; sourceTree = "<group>"; };
+		E2C045A7138A1207006D9CD1 /* PaintingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaintingView.m; path = ../PaintingView.m; sourceTree = "<group>"; };
+		E2C045A9138A3785006D9CD1 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		E2C045AB138A37EC006D9CD1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +96,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2C045AC138A37EC006D9CD1 /* QuartzCore.framework in Frameworks */,
+				E2C045AA138A3785006D9CD1 /* OpenGLES.framework in Frameworks */,
 				E201A2C8137CC7D000A51A46 /* UIKit.framework in Frameworks */,
 				E201A2CA137CC7D000A51A46 /* Foundation.framework in Frameworks */,
 				E201A2CC137CC7D000A51A46 /* CoreGraphics.framework in Frameworks */,
@@ -109,8 +120,6 @@
 		E201A2B8137CC7D000A51A46 = {
 			isa = PBXGroup;
 			children = (
-				E2264F9F1382335D00D4ABF4 /* DrawingView.h */,
-				E2264FA01382335D00D4ABF4 /* DrawingView.m */,
 				E201A2CD137CC7D000A51A46 /* OperaPad */,
 				E201A2ED137CC7D000A51A46 /* OperaPadTests */,
 				E201A2C6137CC7D000A51A46 /* Frameworks */,
@@ -130,6 +139,8 @@
 		E201A2C6137CC7D000A51A46 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E2C045AB138A37EC006D9CD1 /* QuartzCore.framework */,
+				E2C045A9138A3785006D9CD1 /* OpenGLES.framework */,
 				E201A2C7137CC7D000A51A46 /* UIKit.framework */,
 				E201A2C9137CC7D000A51A46 /* Foundation.framework */,
 				E201A2CB137CC7D000A51A46 /* CoreGraphics.framework */,
@@ -148,6 +159,10 @@
 				E201A2DC137CC7D000A51A46 /* OperaPadViewController.h */,
 				E201A2DD137CC7D000A51A46 /* OperaPadViewController.m */,
 				E201A2DF137CC7D000A51A46 /* OperaPadViewController.xib */,
+				E2264F9F1382335D00D4ABF4 /* DrawingView.h */,
+				E2264FA01382335D00D4ABF4 /* DrawingView.m */,
+				E2C045A6138A1207006D9CD1 /* PaintingView.h */,
+				E2C045A7138A1207006D9CD1 /* PaintingView.m */,
 				E201A2CE137CC7D000A51A46 /* Supporting Files */,
 			);
 			path = OperaPad;
@@ -195,6 +210,7 @@
 		E2C045861388DB1F006D9CD1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E2C045A4138A11E7006D9CD1 /* Particle.png */,
 				E2C0459A1389D8E4006D9CD1 /* rag.png */,
 				E2C0458C1388DF54006D9CD1 /* pencil.png */,
 				E2C0458A1388DBD7006D9CD1 /* hand.png */,
@@ -301,6 +317,7 @@
 				E2C045971389D59C006D9CD1 /* eraser.png in Resources */,
 				E2C045991389D79A006D9CD1 /* undo.png in Resources */,
 				E2C0459B1389D8E4006D9CD1 /* rag.png in Resources */,
+				E2C045A5138A11E7006D9CD1 /* Particle.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +357,7 @@
 				E201A2D8137CC7D000A51A46 /* OperaPadAppDelegate.m in Sources */,
 				E201A2DE137CC7D000A51A46 /* OperaPadViewController.m in Sources */,
 				E2264FA11382335D00D4ABF4 /* DrawingView.m in Sources */,
+				E2C045A8138A1207006D9CD1 /* PaintingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
