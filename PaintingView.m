@@ -59,9 +59,6 @@
 
 - (BOOL)createFramebuffer;
 - (void)destroyFramebuffer;
-- (GLuint) prepareBrush:(CGImageRef) image;
-
-
 @end
 
 @implementation PaintingView
@@ -79,10 +76,6 @@
 
 // The GL view is stored in the nib file. When it's unarchived it's sent -initWithCoder:
 - (id)initWithCoder:(NSCoder*)coder {
-	
-	NSMutableArray*	recordedPaths;
-	CGImageRef		brushImage;
-    
     if ((self = [super initWithCoder:coder])) {
 		CAEAGLLayer *eaglLayer = (CAEAGLLayer *)self.layer;
 		
@@ -126,7 +119,7 @@
 		glEnable(GL_POINT_SPRITE_OES);
 		glTexEnvf(GL_POINT_SPRITE_OES, GL_COORD_REPLACE_OES, GL_TRUE);
 //		glPointSize(width / kBrushScale);
-        glPointSize(32.0);
+//        glPointSize(32.0);
 		
 		// Make sure to start with a cleared buffer
 		needsErase = YES;
@@ -141,15 +134,15 @@
 }
 
 // Prepare a brush mask to be used as a texture for painting
--(GLuint) prepareBrush:(CGImageRef) image
+-(brush_t) prepareBrush:(CGImageRef) image
 {
 	size_t width, height;
 	CGContextRef brushContext;
 	GLubyte	*data;
-    GLuint texture;
+    brush_t brush;
     
     if (!image) {
-        return NULL;
+        return brush;
     }
     
     // Get the width and height of the image
@@ -167,9 +160,9 @@
     // You don't need the context at this point, so you need to release it to avoid memory leaks.
     CGContextRelease(brushContext);
     // Use OpenGL ES to generate a name for the texture.
-    glGenTextures(1, &texture);
+    glGenTextures(1, &brush.textureId);
     // Bind the texture name. 
-    glBindTexture(GL_TEXTURE_2D, texture);
+    glBindTexture(GL_TEXTURE_2D, brush.textureId);
     // Set the texture parameters to use a minifying filter and a linear filer (weighted average)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     // Specify a 2D texture image, providing the a pointer to the image data in memory
@@ -177,7 +170,24 @@
     // Release  the image data; it's no longer needed
     free(data);
     
-    return texture;
+    brush.size = width;
+    
+    return brush;
+}
+
+// set a brush texture
+- (void) setBrush:(brush_t) brush
+{
+    glBindTexture(GL_TEXTURE_2D, brush.textureId);
+    glPointSize(brush.size / kBrushScale);
+}
+
+- (void) releaseBrush:(brush_t) brush
+{
+    if (brush.textureId) {
+        glDeleteTextures(1, &brush.textureId);
+        brush.textureId = brush.size = 0;
+    }
 }
 
 // If our view is resized, we'll be asked to layout subviews.
@@ -245,11 +255,8 @@
 // Releases resources when they are not longer needed.
 - (void) dealloc
 {
-	if (brushTexture)
-	{
-		glDeleteTextures(1, &brushTexture);
-		brushTexture = 0;
-	}
+    [self releaseBrush:brushTexture];
+    [self releaseBrush:penTexture];
 	
 	if([EAGLContext currentContext] == context)
 	{
@@ -409,16 +416,14 @@
 {
 	// Set the brush color using premultiplied alpha values
 	glColor4f(red, green, blue, opacity);
-    glBindTexture(GL_TEXTURE_2D, penTexture);
-    glPointSize(8.0);
+    [self setBrush:penTexture];
 }
 
 // sets the brush to an eraser
 - (void)setEraserMode
 {
     glBlendFunc(GL_ZERO, GL_ONE_MINUS_SRC_ALPHA);
-    glBindTexture(GL_TEXTURE_2D, brushTexture);
-    glPointSize(32.0);
+    [self setBrush:brushTexture];
 }
 
 // undoes the last drawing action

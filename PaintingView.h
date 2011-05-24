@@ -60,6 +60,11 @@
 #define kLuminosity			0.75
 #define kSaturation			1.0
 
+typedef struct {
+    GLuint textureId;
+    size_t size;
+} brush_t;
+
 //CLASS INTERFACES:
 
 @interface PaintingView : UIView
@@ -78,8 +83,8 @@
 	GLuint depthRenderbuffer;
 	
     // drawing textures
-    GLuint penTexture;
-	GLuint brushTexture;
+    brush_t penTexture;
+	brush_t brushTexture;
     
 	CGPoint	location;
 	CGPoint	previousLocation;
@@ -96,5 +101,8 @@
 - (void)setBrushColorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue opacity:(CGFloat)opacity;
 - (void)undo;
 - (void)setEraserMode;
+- (brush_t) prepareBrush:(CGImageRef) image;
+- (void) setBrush:(brush_t) brush;
+- (void) releaseBrush:(brush_t) brush;
 
 @end
