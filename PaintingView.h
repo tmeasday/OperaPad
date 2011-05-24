@@ -64,6 +64,7 @@
 
 @interface PaintingView : UIView
 {
+    BOOL disabled;
 @private
 	// The pixel dimensions of the backbuffer
 	GLint backingWidth;
@@ -84,10 +85,13 @@
 	Boolean needsErase;	
 }
 
+@property(nonatomic, readwrite) BOOL disabled;
 @property(nonatomic, readwrite) CGPoint location;
 @property(nonatomic, readwrite) CGPoint previousLocation;
 
-- (void)erase;
-- (void)setBrushColorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue;
+- (void)clear;
+- (void)setBrushColorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue opacity:(CGFloat)opacity;
+- (void)undo;
+- (void)setEraserMode;
 
 @end

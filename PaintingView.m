@@ -64,8 +64,9 @@
 
 @implementation PaintingView
 
-@synthesize  location;
-@synthesize  previousLocation;
+@synthesize location;
+@synthesize previousLocation;
+@synthesize disabled;
 
 // Implement this to override the default layer class (which is [CALayer class]).
 // We do this so that our view will be backed by a layer that is capable of OpenGL ES rendering.
@@ -178,7 +179,7 @@
 	
 	// Clear the framebuffer the first time it is allocated
 	if (needsErase) {
-		[self erase];
+		[self clear];
 		needsErase = NO;
 	}
 }
@@ -245,21 +246,6 @@
 	
 	[context release];
 	[super dealloc];
-}
-
-// Erases the screen
-- (void) erase
-{
-	[EAGLContext setCurrentContext:context];
-	
-	// Clear the buffer
-	glBindFramebufferOES(GL_FRAMEBUFFER_OES, viewFramebuffer);
-	glClearColor(0.0, 0.0, 0.0, 0.0);
-	glClear(GL_COLOR_BUFFER_BIT);
-	
-	// Display the buffer
-	glBindRenderbufferOES(GL_RENDERBUFFER_OES, viewRenderbuffer);
-	[context presentRenderbuffer:GL_RENDERBUFFER_OES];
 }
 
 // Drawings a line onscreen based on where the user touches
@@ -329,21 +315,26 @@
 // Handles the start of a touch
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	CGRect				bounds = [self bounds];
-    UITouch*	touch = [[event touchesForView:self] anyObject];
-	firstTouch = YES;
-	// Convert touch point from UIView referential to OpenGL one (upside-down flip)
-	location = [touch locationInView:self];
-	location.y = bounds.size.height - location.y;
+	CGRect bounds = [self bounds];
+    UITouch* touch = [[event touchesForView:self] anyObject];
+    
+    if (self.disabled) return;
+    
+    firstTouch = YES;
+    // Convert touch point from UIView referential to OpenGL one (upside-down flip)
+    location = [touch locationInView:self];
+    location.y = bounds.size.height - location.y;        
 }
 
 // Handles the continuation of a touch.
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {  
    	  
-	CGRect				bounds = [self bounds];
-	UITouch*			touch = [[event touchesForView:self] anyObject];
-		
+	CGRect bounds = [self bounds];
+	UITouch* touch = [[event touchesForView:self] anyObject];
+    
+    if (self.disabled) return;
+    
 	// Convert touch point from UIView referential to OpenGL one (upside-down flip)
 	if (firstTouch) {
 		firstTouch = NO;
@@ -365,6 +356,9 @@
 {
 	CGRect				bounds = [self bounds];
     UITouch*	touch = [[event touchesForView:self] anyObject];
+    
+    if (self.disabled) return;
+
 	if (firstTouch) {
 		firstTouch = NO;
 		previousLocation = [touch previousLocationInView:self];
@@ -380,13 +374,40 @@
 	// This application is not saving state.
 }
 
-- (void)setBrushColorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue
+
+// public methods on the PaintingView
+
+// Erases the screen
+- (void) clear
 {
-	// Set the brush color using premultiplied alpha values
-	glColor4f(red	* kBrushOpacity,
-			  green * kBrushOpacity,
-			  blue	* kBrushOpacity,
-			  kBrushOpacity);
+	[EAGLContext setCurrentContext:context];
+	
+	// Clear the buffer
+	glBindFramebufferOES(GL_FRAMEBUFFER_OES, viewFramebuffer);
+	glClearColor(0.0, 0.0, 0.0, 0.0);
+	glClear(GL_COLOR_BUFFER_BIT);
+	
+	// Display the buffer
+	glBindRenderbufferOES(GL_RENDERBUFFER_OES, viewRenderbuffer);
+	[context presentRenderbuffer:GL_RENDERBUFFER_OES];
 }
 
+// sets the brush color + opacity
+- (void)setBrushColorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue opacity:(CGFloat)opacity
+{
+	// Set the brush color using premultiplied alpha values
+	glColor4f(red, green, blue, opacity);
+}
+
+// sets the brush to an eraser
+- (void)setEraserMode
+{
+    glBlendFunc(GL_ZERO, GL_ONE_MINUS_SRC_ALPHA);
+}
+
+// undoes the last drawing action
+- (void) undo
+{
+    // pass
+}
 @end

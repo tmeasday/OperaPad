@@ -50,8 +50,6 @@
     // read mode
     scrollView.scrollEnabled = YES;
     scrollView.pagingEnabled = YES;
-    
-    [overlayView setBrushColorWithRed: 0.0 green:0.5 blue:0.5];
 }
 
 - (void)viewDidUnload
@@ -73,20 +71,32 @@
 
 - (IBAction)modeChanged:(id)sender {
     switch (modeChooser.selectedSegmentIndex) {
-        case 0:
+        case 0: // move
             scrollView.scrollEnabled = YES;
-            scrollView.pagingEnabled = YES;            
+            scrollView.pagingEnabled = YES;
+            overlayView.disabled = YES;
             break;
-        case 1:
+        case 1: // draw
             scrollView.scrollEnabled = NO;
             scrollView.pagingEnabled = NO;
+
+            overlayView.disabled = NO;
+            [overlayView setBrushColorWithRed: 0.0 green:0.5 blue:0.5 opacity:1.0];
             break;
-        case 4:
-            [overlayView erase];
+        case 2: // undo
+            [overlayView undo];
             modeChooser.selectedSegmentIndex = 1;
-//            scrollView.scrollEnabled = NO;
-//            scrollView.pagingEnabled = NO;
-        default:
+            break;
+        case 3: // erase
+            scrollView.scrollEnabled = NO;
+            scrollView.pagingEnabled = NO;
+            
+            overlayView.disabled = NO;
+            [overlayView setEraserMode]; 
+            break;
+        case 4: // clear
+            [overlayView clear];
+            modeChooser.selectedSegmentIndex = 1;
             break;
     }    
 }
