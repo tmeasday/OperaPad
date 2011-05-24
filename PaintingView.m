@@ -59,6 +59,8 @@
 
 - (BOOL)createFramebuffer;
 - (void)destroyFramebuffer;
+- (GLuint) prepareBrush:(CGImageRef) image;
+
 
 @end
 
@@ -80,9 +82,6 @@
 	
 	NSMutableArray*	recordedPaths;
 	CGImageRef		brushImage;
-	CGContextRef	brushContext;
-	GLubyte			*brushData;
-	size_t			width, height;
     
     if ((self = [super initWithCoder:coder])) {
 		CAEAGLLayer *eaglLayer = (CAEAGLLayer *)self.layer;
@@ -101,37 +100,9 @@
 		
 		// Create a texture from an image
 		// First create a UIImage object from the data in a image file, and then extract the Core Graphics image
-		brushImage = [UIImage imageNamed:@"Particle.png"].CGImage;
-		
-		// Get the width and height of the image
-		width = CGImageGetWidth(brushImage);
-		height = CGImageGetHeight(brushImage);
-		
-		// Texture dimensions must be a power of 2. If you write an application that allows users to supply an image,
-		// you'll want to add code that checks the dimensions and takes appropriate action if they are not a power of 2.
-		
-		// Make sure the image exists
-		if(brushImage) {
-			// Allocate  memory needed for the bitmap context
-			brushData = (GLubyte *) calloc(width * height * 4, sizeof(GLubyte));
-			// Use  the bitmatp creation function provided by the Core Graphics framework. 
-			brushContext = CGBitmapContextCreate(brushData, width, height, 8, width * 4, CGImageGetColorSpace(brushImage), kCGImageAlphaPremultipliedLast);
-			// After you create the context, you can draw the  image to the context.
-			CGContextDrawImage(brushContext, CGRectMake(0.0, 0.0, (CGFloat)width, (CGFloat)height), brushImage);
-			// You don't need the context at this point, so you need to release it to avoid memory leaks.
-			CGContextRelease(brushContext);
-			// Use OpenGL ES to generate a name for the texture.
-			glGenTextures(1, &brushTexture);
-			// Bind the texture name. 
-			glBindTexture(GL_TEXTURE_2D, brushTexture);
-			// Set the texture parameters to use a minifying filter and a linear filer (weighted average)
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-			// Specify a 2D texture image, providing the a pointer to the image data in memory
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, brushData);
-			// Release  the image data; it's no longer needed
-            free(brushData);
-		}
-		
+		brushTexture = [self prepareBrush:[UIImage imageNamed:@"brush-64.png"].CGImage];
+		penTexture = [self prepareBrush:[UIImage imageNamed:@"pencil-8.png"].CGImage];
+				
 		// Set the view's scale factor
 		self.contentScaleFactor = 1.0;
 	
@@ -154,7 +125,8 @@
 		
 		glEnable(GL_POINT_SPRITE_OES);
 		glTexEnvf(GL_POINT_SPRITE_OES, GL_COORD_REPLACE_OES, GL_TRUE);
-		glPointSize(width / kBrushScale);
+//		glPointSize(width / kBrushScale);
+        glPointSize(32.0);
 		
 		// Make sure to start with a cleared buffer
 		needsErase = YES;
@@ -166,6 +138,46 @@
 	}
 	
 	return self;
+}
+
+// Prepare a brush mask to be used as a texture for painting
+-(GLuint) prepareBrush:(CGImageRef) image
+{
+	size_t width, height;
+	CGContextRef brushContext;
+	GLubyte	*data;
+    GLuint texture;
+    
+    if (!image) {
+        return NULL;
+    }
+    
+    // Get the width and height of the image
+    // Texture dimensions must be a power of 2. If you write an application that allows users to supply an image,
+    // you'll want to add code that checks the dimensions and takes appropriate action if they are not a power of 2.
+    width = CGImageGetWidth(image);
+    height = CGImageGetHeight(image);
+    
+    // Allocate  memory needed for the bitmap context
+    data = (GLubyte *) calloc(width * height * 4, sizeof(GLubyte));
+    // Use  the bitmatp creation function provided by the Core Graphics framework. 
+    brushContext = CGBitmapContextCreate(data, width, height, 8, width * 4, CGImageGetColorSpace(image), kCGImageAlphaPremultipliedLast);
+    // After you create the context, you can draw the  image to the context.
+    CGContextDrawImage(brushContext, CGRectMake(0.0, 0.0, (CGFloat)width, (CGFloat)height), image);
+    // You don't need the context at this point, so you need to release it to avoid memory leaks.
+    CGContextRelease(brushContext);
+    // Use OpenGL ES to generate a name for the texture.
+    glGenTextures(1, &texture);
+    // Bind the texture name. 
+    glBindTexture(GL_TEXTURE_2D, texture);
+    // Set the texture parameters to use a minifying filter and a linear filer (weighted average)
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    // Specify a 2D texture image, providing the a pointer to the image data in memory
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+    // Release  the image data; it's no longer needed
+    free(data);
+    
+    return texture;
 }
 
 // If our view is resized, we'll be asked to layout subviews.
@@ -329,24 +341,24 @@
 // Handles the continuation of a touch.
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {  
-   	  
 	CGRect bounds = [self bounds];
 	UITouch* touch = [[event touchesForView:self] anyObject];
+    
     
     if (self.disabled) return;
     
 	// Convert touch point from UIView referential to OpenGL one (upside-down flip)
 	if (firstTouch) {
 		firstTouch = NO;
-		previousLocation = [touch previousLocationInView:self];
-		previousLocation.y = bounds.size.height - previousLocation.y;
-	} else {
-		location = [touch locationInView:self];
-	    location.y = bounds.size.height - location.y;
-		previousLocation = [touch previousLocationInView:self];
-		previousLocation.y = bounds.size.height - previousLocation.y;
-	}
-		
+    }
+
+    location = [touch locationInView:self];
+    location.y = bounds.size.height - location.y;
+    previousLocation = [touch previousLocationInView:self];
+    previousLocation.y = bounds.size.height - previousLocation.y;
+
+//    NSLog(@"touch from (%f, %f) -> (%f, %f)", previousLocation.x, previousLocation.y, location.x, location.y);
+    
 	// Render the stroke
 	[self renderLineFromPoint:previousLocation toPoint:location];
 }
@@ -397,12 +409,16 @@
 {
 	// Set the brush color using premultiplied alpha values
 	glColor4f(red, green, blue, opacity);
+    glBindTexture(GL_TEXTURE_2D, penTexture);
+    glPointSize(8.0);
 }
 
 // sets the brush to an eraser
 - (void)setEraserMode
 {
     glBlendFunc(GL_ZERO, GL_ONE_MINUS_SRC_ALPHA);
+    glBindTexture(GL_TEXTURE_2D, brushTexture);
+    glPointSize(32.0);
 }
 
 // undoes the last drawing action

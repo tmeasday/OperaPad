@@ -29,12 +29,15 @@
 		E255856C138204EE001A168C /* puccini-1.png in Resources */ = {isa = PBXBuildFile; fileRef = E2558569138204EE001A168C /* puccini-1.png */; };
 		E255856D138204EE001A168C /* puccini-2.png in Resources */ = {isa = PBXBuildFile; fileRef = E255856A138204EE001A168C /* puccini-2.png */; };
 		E255856E138204EE001A168C /* puccini-3.png in Resources */ = {isa = PBXBuildFile; fileRef = E255856B138204EE001A168C /* puccini-3.png */; };
+		E29DD53B138B5962008BCCB1 /* pencil-16.png in Resources */ = {isa = PBXBuildFile; fileRef = E29DD53A138B5962008BCCB1 /* pencil-16.png */; };
+		E29DD53E138B5977008BCCB1 /* brush-64.png in Resources */ = {isa = PBXBuildFile; fileRef = E29DD53D138B5977008BCCB1 /* brush-64.png */; };
+		E29DD540138B5C95008BCCB1 /* pencil-32.png in Resources */ = {isa = PBXBuildFile; fileRef = E29DD53F138B5C95008BCCB1 /* pencil-32.png */; };
+		E29DD542138B5CC9008BCCB1 /* pencil-8.png in Resources */ = {isa = PBXBuildFile; fileRef = E29DD541138B5CC9008BCCB1 /* pencil-8.png */; };
 		E2C0458B1388DBD7006D9CD1 /* hand.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C0458A1388DBD7006D9CD1 /* hand.png */; };
 		E2C0458D1388DF54006D9CD1 /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C0458C1388DF54006D9CD1 /* pencil.png */; };
 		E2C045971389D59C006D9CD1 /* eraser.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C045961389D59C006D9CD1 /* eraser.png */; };
 		E2C045991389D79A006D9CD1 /* undo.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C045981389D79A006D9CD1 /* undo.png */; };
 		E2C0459B1389D8E4006D9CD1 /* rag.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C0459A1389D8E4006D9CD1 /* rag.png */; };
-		E2C045A5138A11E7006D9CD1 /* Particle.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C045A4138A11E7006D9CD1 /* Particle.png */; };
 		E2C045A8138A1207006D9CD1 /* PaintingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C045A7138A1207006D9CD1 /* PaintingView.m */; };
 		E2C045AA138A3785006D9CD1 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2C045A9138A3785006D9CD1 /* OpenGLES.framework */; };
 		E2C045AC138A37EC006D9CD1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2C045AB138A37EC006D9CD1 /* QuartzCore.framework */; };
@@ -79,12 +82,15 @@
 		E2558569138204EE001A168C /* puccini-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "puccini-1.png"; sourceTree = "<group>"; };
 		E255856A138204EE001A168C /* puccini-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "puccini-2.png"; sourceTree = "<group>"; };
 		E255856B138204EE001A168C /* puccini-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "puccini-3.png"; sourceTree = "<group>"; };
+		E29DD53A138B5962008BCCB1 /* pencil-16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pencil-16.png"; path = "../../../../Dropbox/OperaPad/pencil-16.png"; sourceTree = "<group>"; };
+		E29DD53D138B5977008BCCB1 /* brush-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "brush-64.png"; path = "../../../../Dropbox/OperaPad/brush-64.png"; sourceTree = "<group>"; };
+		E29DD53F138B5C95008BCCB1 /* pencil-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pencil-32.png"; path = "../../../../Dropbox/OperaPad/pencil-32.png"; sourceTree = "<group>"; };
+		E29DD541138B5CC9008BCCB1 /* pencil-8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pencil-8.png"; path = "../../../../Dropbox/OperaPad/pencil-8.png"; sourceTree = "<group>"; };
 		E2C0458A1388DBD7006D9CD1 /* hand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hand.png; sourceTree = "<group>"; };
 		E2C0458C1388DF54006D9CD1 /* pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pencil.png; sourceTree = "<group>"; };
 		E2C045961389D59C006D9CD1 /* eraser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eraser.png; sourceTree = "<group>"; };
 		E2C045981389D79A006D9CD1 /* undo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = undo.png; sourceTree = "<group>"; };
 		E2C0459A1389D8E4006D9CD1 /* rag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rag.png; sourceTree = "<group>"; };
-		E2C045A4138A11E7006D9CD1 /* Particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Particle.png; sourceTree = "<group>"; };
 		E2C045A6138A1207006D9CD1 /* PaintingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaintingView.h; path = ../PaintingView.h; sourceTree = "<group>"; };
 		E2C045A7138A1207006D9CD1 /* PaintingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaintingView.m; path = ../PaintingView.m; sourceTree = "<group>"; };
 		E2C045A9138A3785006D9CD1 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -210,7 +216,10 @@
 		E2C045861388DB1F006D9CD1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				E2C045A4138A11E7006D9CD1 /* Particle.png */,
+				E29DD53D138B5977008BCCB1 /* brush-64.png */,
+				E29DD541138B5CC9008BCCB1 /* pencil-8.png */,
+				E29DD53A138B5962008BCCB1 /* pencil-16.png */,
+				E29DD53F138B5C95008BCCB1 /* pencil-32.png */,
 				E2C0459A1389D8E4006D9CD1 /* rag.png */,
 				E2C0458C1388DF54006D9CD1 /* pencil.png */,
 				E2C0458A1388DBD7006D9CD1 /* hand.png */,
@@ -317,7 +326,10 @@
 				E2C045971389D59C006D9CD1 /* eraser.png in Resources */,
 				E2C045991389D79A006D9CD1 /* undo.png in Resources */,
 				E2C0459B1389D8E4006D9CD1 /* rag.png in Resources */,
-				E2C045A5138A11E7006D9CD1 /* Particle.png in Resources */,
+				E29DD53B138B5962008BCCB1 /* pencil-16.png in Resources */,
+				E29DD53E138B5977008BCCB1 /* brush-64.png in Resources */,
+				E29DD540138B5C95008BCCB1 /* pencil-32.png in Resources */,
+				E29DD542138B5CC9008BCCB1 /* pencil-8.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

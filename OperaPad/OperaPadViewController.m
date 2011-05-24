@@ -81,7 +81,7 @@
             scrollView.pagingEnabled = NO;
 
             overlayView.disabled = NO;
-            [overlayView setBrushColorWithRed: 0.0 green:0.5 blue:0.5 opacity:1.0];
+            [overlayView setBrushColorWithRed: 0.8 green:0.2 blue:0.2 opacity:1.0];
             break;
         case 2: // undo
             [overlayView undo];

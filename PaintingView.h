@@ -55,7 +55,7 @@
 //CONSTANTS:
 
 #define kBrushOpacity		(1.0 / 3.0)
-#define kBrushPixelStep		3
+#define kBrushPixelStep		1
 #define kBrushScale			2
 #define kLuminosity			0.75
 #define kSaturation			1.0
@@ -64,7 +64,6 @@
 
 @interface PaintingView : UIView
 {
-    BOOL disabled;
 @private
 	// The pixel dimensions of the backbuffer
 	GLint backingWidth;
@@ -78,14 +77,18 @@
 	// OpenGL name for the depth buffer that is attached to viewFramebuffer, if it exists (0 if it does not exist)
 	GLuint depthRenderbuffer;
 	
-	GLuint	brushTexture;
+    // drawing textures
+    GLuint penTexture;
+	GLuint brushTexture;
+    
 	CGPoint	location;
 	CGPoint	previousLocation;
 	Boolean	firstTouch;
 	Boolean needsErase;	
+    Boolean disabled;
 }
 
-@property(nonatomic, readwrite) BOOL disabled;
+@property(nonatomic, readwrite) Boolean disabled;
 @property(nonatomic, readwrite) CGPoint location;
 @property(nonatomic, readwrite) CGPoint previousLocation;
 
