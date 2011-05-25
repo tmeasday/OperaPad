@@ -45,11 +45,12 @@
     NSInteger width = 1024, height = 768;
     
     int nPages = 3;
+    pageNumber = 0;
     scrollView.contentSize = CGSizeMake(nPages*width,height-20);
     
-    // load all the pages up
+    // load all the pages up (NOTE: assumes N_CACHED_PAGES = 3)
     for (int i = 0; i < N_CACHED_PAGES; i++) {
-        CGRect rect = CGRectMake((((N_CACHED_PAGES-1)/-2) + i) * width, 0, width, height);
+        CGRect rect = CGRectMake((-1 + i) * width, 0, width, height);
         scorePages[i] = [[UIImageView alloc] initWithFrame:rect];
         
         UIImage *pageImage = [self loadPageImage:i];
@@ -93,7 +94,36 @@
     NSInteger newPageNumber = lround(scrollView.contentOffset.x / pageWidth);
     
     if (newPageNumber != pageNumber) {
-        
+        if (newPageNumber > pageNumber) {
+            // NOTE: assumes N_CACHED_PAGES is 3
+            // move everything to the left one
+            UIImageView *changingPage = scorePages[0];
+            scorePages[0] = scorePages[1];
+            scorePages[1] = scorePages[2];
+            
+            // load the new image into the left-most page
+            UIImage *pageImage = [self loadPageImage:pageNumber + 3];
+            if (pageImage != NULL) [changingPage setImage:pageImage];
+            
+            // re-position it
+            CGRect frame = changingPage.frame;
+            frame.origin.x += 3 * 1024; // FIXME: magic number
+            changingPage.frame = frame;
+            scorePages[2] = changingPage;
+        } else {
+            
+        }
+        pageNumber = newPageNumber;
+    }
+}
+
+- (UIImage *) loadPageImage:(NSInteger)page
+{
+    if (page > 0) {
+        NSString *filename = [NSString stringWithFormat:@"puccini-%d.png", page];
+        return [UIImage imageNamed:filename];        
+    } else {
+        return NULL;
     }
 }
 
@@ -129,13 +159,5 @@
     }    
 }
                                                                    
-- (UIImage *) loadPageImage:(NSInteger)page
-{
-    if (page > 0) {
-        NSString *filename = [NSString stringWithFormat:@"puccini-%d.png", page];
-        return [UIImage imageNamed:filename];        
-    } else {
-        return NULL;
-    }
-}
+
 @end
