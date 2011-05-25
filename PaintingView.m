@@ -265,6 +265,8 @@
 		vertexBuffer[2 * vertexCount + 1] = start.y + (end.y - start.y) * ((GLfloat)i / (GLfloat)count);
 		vertexCount += 1;
 	}
+    
+//    NSLog(@"[%f, %f, %f, %f, %f, %f, ....]", vertexBuffer[0], vertexBuffer[1], vertexBuffer[2], vertexBuffer[3], vertexBuffer[4], vertexBuffer[5]);
 	
 	// Render the vertex array
 	glVertexPointer(2, GL_FLOAT, 0, vertexBuffer);
@@ -307,7 +309,7 @@
     location = [touch locationInView:self];
     location.y = bounds.size.height - location.y;      
     
-    [snapshot saveToTempFile];
+    [snapshot take];
 }
 
 // Handles the continuation of a touch.
@@ -393,7 +395,8 @@
 
 // undoes the last drawing action
 - (void) undo
-{
+{   
+    [snapshot saveToTempFile];
     [snapshot restore];
 }
 @end

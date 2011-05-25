@@ -26,7 +26,7 @@
 @property(retain, nonatomic) UIImage *image;
 
 - (id) initFromEAGLView:(id<EAGLView>)view;
-- (void) snapshot;
+- (void) take;
 - (void) saveToTempFile;
 - (void) restore;
 

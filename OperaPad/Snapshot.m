@@ -29,14 +29,14 @@
 
 // this code is taken directly from apple's "OpenGL ES View Snapshot" example
 // save the current rendered view into the image
-- (void) snapshot
+- (void) take
 {
     // Get the size of the backing CAEAGLLayer
     GLint backingWidth, backingHeight;
     glBindRenderbufferOES(GL_RENDERBUFFER_OES, view.renderBuffer);
     glGetRenderbufferParameterivOES(GL_RENDERBUFFER_OES, GL_RENDERBUFFER_WIDTH_OES, &backingWidth);
     glGetRenderbufferParameterivOES(GL_RENDERBUFFER_OES, GL_RENDERBUFFER_HEIGHT_OES, &backingHeight);
-    NSLog(@"size: %d x %d", backingWidth, backingHeight);
+    NSLog(@"saving image at size: %d x %d", backingWidth, backingHeight);
     
     NSInteger x = 0, y = 0, width = backingWidth, height = backingHeight;
     NSInteger dataLength = width * height * 4;
@@ -116,7 +116,50 @@
 	glClear(GL_COLOR_BUFFER_BIT);
     
     // Now, draw the image into the buffer
-	
+    // check that these guys are turned on right
+    glEnable(GL_TEXTURE_2D);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_ONE, GL_SRC_COLOR);
+        
+    // turn the image into a texture
+    GLuint texture[1];
+    glGenTextures(1, &texture[0]);
+    glBindTexture(GL_TEXTURE_2D, texture[0]);
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR); 
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+    
+    // TODO -- we could probably just save the pixel data without going via an image
+    CGImageRef cgimage = self.image.CGImage;
+    GLuint width = CGImageGetWidth(cgimage);
+    GLuint height = CGImageGetHeight(cgimage);
+    NSLog(@"creating texture of size: %d x %d", width, height);
+    
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+//    void *imageData = malloc( height * width * 4 );
+    void *imageData = malloc( 1024 * 1024 * 4 );
+//    CGContextRef context = CGBitmapContextCreate(imageData, width, height, 8, width * 4, CGImageGetColorSpace(cgimage), kCGImageAlphaPremultipliedLast);
+    CGContextRef context = CGBitmapContextCreate(imageData, 1024, 1024, 8, width * 4, CGImageGetColorSpace(cgimage), kCGImageAlphaPremultipliedLast);
+    CGColorSpaceRelease( colorSpace );
+    CGContextClearRect( context, CGRectMake( 0, 0, width, height ) );
+    CGContextTranslateCTM( context, 0, height - height );
+    CGContextDrawImage( context, CGRectMake( 0, 0, width, height ), cgimage );
+    
+//    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, imageData);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 1024, 1024, 0, GL_RGBA, GL_UNSIGNED_BYTE, imageData);
+    
+    CGContextRelease(context);
+    free(imageData);
+    
+    // now draw the texture
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glBindTexture(GL_TEXTURE_2D, texture[0]);
+    glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+    glPointSize(width);
+    
+    GLfloat vertex[2] = {width / 2.0, height / 2.0};
+    glVertexPointer(2, GL_FLOAT, 0, vertex);
+    glDrawArrays(GL_POINTS, 0, 1);
+    
 	// Display the buffer
 	glBindRenderbufferOES(GL_RENDERBUFFER_OES, view.renderBuffer);
 	[view.context presentRenderbuffer:GL_RENDERBUFFER_OES];       
