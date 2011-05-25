@@ -33,6 +33,7 @@
 		E29DD53E138B5977008BCCB1 /* brush-64.png in Resources */ = {isa = PBXBuildFile; fileRef = E29DD53D138B5977008BCCB1 /* brush-64.png */; };
 		E29DD540138B5C95008BCCB1 /* pencil-32.png in Resources */ = {isa = PBXBuildFile; fileRef = E29DD53F138B5C95008BCCB1 /* pencil-32.png */; };
 		E29DD542138B5CC9008BCCB1 /* pencil-8.png in Resources */ = {isa = PBXBuildFile; fileRef = E29DD541138B5CC9008BCCB1 /* pencil-8.png */; };
+		E2A7F493138C95D200E48D48 /* Snapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A7F492138C95D200E48D48 /* Snapshot.m */; };
 		E2C0458B1388DBD7006D9CD1 /* hand.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C0458A1388DBD7006D9CD1 /* hand.png */; };
 		E2C0458D1388DF54006D9CD1 /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C0458C1388DF54006D9CD1 /* pencil.png */; };
 		E2C045971389D59C006D9CD1 /* eraser.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C045961389D59C006D9CD1 /* eraser.png */; };
@@ -86,6 +87,8 @@
 		E29DD53D138B5977008BCCB1 /* brush-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "brush-64.png"; path = "../../../../Dropbox/OperaPad/brush-64.png"; sourceTree = "<group>"; };
 		E29DD53F138B5C95008BCCB1 /* pencil-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pencil-32.png"; path = "../../../../Dropbox/OperaPad/pencil-32.png"; sourceTree = "<group>"; };
 		E29DD541138B5CC9008BCCB1 /* pencil-8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pencil-8.png"; path = "../../../../Dropbox/OperaPad/pencil-8.png"; sourceTree = "<group>"; };
+		E2A7F491138C95D200E48D48 /* Snapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Snapshot.h; sourceTree = "<group>"; };
+		E2A7F492138C95D200E48D48 /* Snapshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Snapshot.m; sourceTree = "<group>"; };
 		E2C0458A1388DBD7006D9CD1 /* hand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hand.png; sourceTree = "<group>"; };
 		E2C0458C1388DF54006D9CD1 /* pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pencil.png; sourceTree = "<group>"; };
 		E2C045961389D59C006D9CD1 /* eraser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eraser.png; sourceTree = "<group>"; };
@@ -170,6 +173,8 @@
 				E2C045A6138A1207006D9CD1 /* PaintingView.h */,
 				E2C045A7138A1207006D9CD1 /* PaintingView.m */,
 				E201A2CE137CC7D000A51A46 /* Supporting Files */,
+				E2A7F491138C95D200E48D48 /* Snapshot.h */,
+				E2A7F492138C95D200E48D48 /* Snapshot.m */,
 			);
 			path = OperaPad;
 			sourceTree = "<group>";
@@ -370,6 +375,7 @@
 				E201A2DE137CC7D000A51A46 /* OperaPadViewController.m in Sources */,
 				E2264FA11382335D00D4ABF4 /* DrawingView.m in Sources */,
 				E2C045A8138A1207006D9CD1 /* PaintingView.m in Sources */,
+				E2A7F493138C95D200E48D48 /* Snapshot.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

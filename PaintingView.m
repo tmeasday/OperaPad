@@ -28,6 +28,10 @@
 @synthesize location;
 @synthesize previousLocation;
 @synthesize disabled;
+@synthesize frameBuffer;
+@synthesize renderBuffer;
+@synthesize context;
+
 
 // Implement this to override the default layer class (which is [CALayer class]).
 // We do this so that our view will be backed by a layer that is capable of OpenGL ES rendering.
@@ -82,6 +86,9 @@
 		
 		// Make sure to start with a cleared buffer
 		needsErase = YES;
+        
+        // prepare the snapshot
+        snapshot = [[Snapshot alloc] initFromEAGLView:self];
 	}
 	
 	return self;
@@ -163,15 +170,15 @@
 - (BOOL)createFramebuffer
 {
 	// Generate IDs for a framebuffer object and a color renderbuffer
-	glGenFramebuffersOES(1, &viewFramebuffer);
-	glGenRenderbuffersOES(1, &viewRenderbuffer);
+	glGenFramebuffersOES(1, &frameBuffer);
+	glGenRenderbuffersOES(1, &renderBuffer);
 	
-	glBindFramebufferOES(GL_FRAMEBUFFER_OES, viewFramebuffer);
-	glBindRenderbufferOES(GL_RENDERBUFFER_OES, viewRenderbuffer);
+	glBindFramebufferOES(GL_FRAMEBUFFER_OES, frameBuffer);
+	glBindRenderbufferOES(GL_RENDERBUFFER_OES, renderBuffer);
 	// This call associates the storage for the current render buffer with the EAGLDrawable (our CAEAGLLayer)
 	// allowing us to draw into a buffer that will later be rendered to screen wherever the layer is (which corresponds with our view).
 	[context renderbufferStorage:GL_RENDERBUFFER_OES fromDrawable:(id<EAGLDrawable>)self.layer];
-	glFramebufferRenderbufferOES(GL_FRAMEBUFFER_OES, GL_COLOR_ATTACHMENT0_OES, GL_RENDERBUFFER_OES, viewRenderbuffer);
+	glFramebufferRenderbufferOES(GL_FRAMEBUFFER_OES, GL_COLOR_ATTACHMENT0_OES, GL_RENDERBUFFER_OES, renderBuffer);
 	
 	glGetRenderbufferParameterivOES(GL_RENDERBUFFER_OES, GL_RENDERBUFFER_WIDTH_OES, &backingWidth);
 	glGetRenderbufferParameterivOES(GL_RENDERBUFFER_OES, GL_RENDERBUFFER_HEIGHT_OES, &backingHeight);
@@ -187,17 +194,17 @@
 		NSLog(@"failed to make complete framebuffer object %x", glCheckFramebufferStatusOES(GL_FRAMEBUFFER_OES));
 		return NO;
 	}
-	
+    
 	return YES;
 }
 
 // Clean up any buffers we have allocated.
 - (void)destroyFramebuffer
 {
-	glDeleteFramebuffersOES(1, &viewFramebuffer);
-	viewFramebuffer = 0;
-	glDeleteRenderbuffersOES(1, &viewRenderbuffer);
-	viewRenderbuffer = 0;
+	glDeleteFramebuffersOES(1, &frameBuffer);
+	frameBuffer = 0;
+	glDeleteRenderbuffersOES(1, &renderBuffer);
+	renderBuffer = 0;
 	
 	if(depthRenderbuffer)
 	{
@@ -206,69 +213,13 @@
 	}
 }
 
-- (void) writeSnapshot
-{
-    // save out to a file
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    
-    NSData* imgData = UIImagePNGRepresentation(snapshot);
-    NSString* targetPath = [NSString stringWithFormat:@"%@/%@", documentsDirectory, @"thisismyview.png" ];
-    NSLog(targetPath);
-    [imgData writeToFile:targetPath atomically:YES]; 
-}
-
-- (void) saveSnapshot
-{    
-    const int width = self.bounds.size.width, height = self.bounds.size.height, dataLength = width * height * 4;
-    
-    GLubyte *buffer = (GLubyte *) malloc(sizeof(GLubyte) * dataLength);
-    glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
-    
-    // make data provider with data.
-    CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, buffer, dataLength, NULL);
-    
-    // prep the ingredients
-    int bitsPerComponent = 8;
-    int bitsPerPixel = 32;
-    int bytesPerRow = 4 * width;
-    CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceRGB();
-    CGBitmapInfo bitmapInfo = kCGBitmapByteOrderDefault | kCGImageAlphaLast;
-    CGColorRenderingIntent renderingIntent = kCGRenderingIntentDefault;
-    
-    // make the cgimage
-    CGImageRef imageRef = CGImageCreate(width, height, bitsPerComponent, bitsPerPixel, bytesPerRow, colorSpaceRef, bitmapInfo, provider, NULL, NO, renderingIntent);
-    
-    // then make the uiimage from that
-    snapshot = [ UIImage imageWithCGImage:imageRef scale:1.0 orientation:UIImageOrientationUp ];
-    CGImageRelease( imageRef );
-    
-    [self writeSnapshot];
-
-//    Boolean allZero = true;
-//    for (int i = 0; i < width * height * 4; i++) {
-//        allZero = allZero || (savedBuffer[i] == 0);
-//    }
-//    if (allZero) {
-//        NSLog(@"All Zero");
-//    } else {
-//        NSLog(@"Not all Zero");
-//    }
-    
-//    NSLog(@"%f, %f, %f, %f, %f, %f, %f, %f", savedBuffer[0], savedBuffer[1], savedBuffer[2], savedBuffer[3], savedBuffer[4], savedBuffer[5], savedBuffer[6], savedBuffer[7]);
-}
-
-- (void) restoreSnapshot
-{
-//    GLsizei width = self.bounds.size.width, height = self.bounds.size.height;
-//    glDrawPixels(width, height, GL_RGBA, GL_FLOAT, savedBuffer);
-}
-
 // Releases resources when they are not longer needed.
 - (void) dealloc
 {
     [self releaseBrush:brushTexture];
     [self releaseBrush:penTexture];
+    
+    if (snapshot) [snapshot release];
 	
 	if([EAGLContext currentContext] == context)
 	{
@@ -289,7 +240,7 @@
 						i;
 	
 	[EAGLContext setCurrentContext:context];
-	glBindFramebufferOES(GL_FRAMEBUFFER_OES, viewFramebuffer);
+	glBindFramebufferOES(GL_FRAMEBUFFER_OES, frameBuffer);
 	
 	// Convert locations from Points to Pixels
 	CGFloat scale = self.contentScaleFactor;
@@ -320,7 +271,7 @@
 	glDrawArrays(GL_POINTS, 0, vertexCount);
     
 	// Display the buffer
-	glBindRenderbufferOES(GL_RENDERBUFFER_OES, viewRenderbuffer);
+	glBindRenderbufferOES(GL_RENDERBUFFER_OES, renderBuffer);
 	[context presentRenderbuffer:GL_RENDERBUFFER_OES];
 }
 
@@ -354,7 +305,9 @@
     firstTouch = YES;
     // Convert touch point from UIView referential to OpenGL one (upside-down flip)
     location = [touch locationInView:self];
-    location.y = bounds.size.height - location.y;        
+    location.y = bounds.size.height - location.y;      
+    
+    [snapshot saveToTempFile];
 }
 
 // Handles the continuation of a touch.
@@ -414,12 +367,12 @@
 	[EAGLContext setCurrentContext:context];
 	
 	// Clear the buffer
-	glBindFramebufferOES(GL_FRAMEBUFFER_OES, viewFramebuffer);
+	glBindFramebufferOES(GL_FRAMEBUFFER_OES, frameBuffer);
 	glClearColor(0.0, 0.0, 0.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT);
 	
 	// Display the buffer
-	glBindRenderbufferOES(GL_RENDERBUFFER_OES, viewRenderbuffer);
+	glBindRenderbufferOES(GL_RENDERBUFFER_OES, renderBuffer);
 	[context presentRenderbuffer:GL_RENDERBUFFER_OES];
 }
 
@@ -441,6 +394,6 @@
 // undoes the last drawing action
 - (void) undo
 {
-    [self saveSnapshot];
+    [snapshot restore];
 }
 @end

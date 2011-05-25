@@ -51,6 +51,7 @@
 #import <OpenGLES/EAGL.h>
 #import <OpenGLES/ES1/gl.h>
 #import <OpenGLES/ES1/glext.h>
+#import "Snapshot.h"
 
 //CONSTANTS:
 
@@ -67,7 +68,7 @@ typedef struct {
 
 //CLASS INTERFACES:
 
-@interface PaintingView : UIView
+@interface PaintingView : UIView<EAGLView>
 {
 @private
 	// The pixel dimensions of the backbuffer
@@ -77,7 +78,7 @@ typedef struct {
 	EAGLContext *context;
 	
 	// OpenGL names for the renderbuffer and framebuffers used to render to this view
-	GLuint viewRenderbuffer, viewFramebuffer;
+	GLuint renderBuffer, frameBuffer;
 	
 	// OpenGL name for the depth buffer that is attached to viewFramebuffer, if it exists (0 if it does not exist)
 	GLuint depthRenderbuffer;
@@ -86,7 +87,7 @@ typedef struct {
     brush_t penTexture;
 	brush_t brushTexture;
     
-    UIImage *snapshot;
+    Snapshot *snapshot;
     
 	CGPoint	location;
 	CGPoint	previousLocation;
@@ -98,6 +99,9 @@ typedef struct {
 @property(nonatomic, readwrite) Boolean disabled;
 @property(nonatomic, readwrite) CGPoint location;
 @property(nonatomic, readwrite) CGPoint previousLocation;
+@property(nonatomic, readonly) GLuint renderBuffer;
+@property(nonatomic, readonly) GLuint frameBuffer;
+@property(nonatomic, readonly) EAGLContext *context;
 
 - (void)clear;
 - (void)setBrushColorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue opacity:(CGFloat)opacity;
