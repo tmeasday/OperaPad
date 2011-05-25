@@ -132,33 +132,46 @@
     CGImageRef cgimage = self.image.CGImage;
     GLuint width = CGImageGetWidth(cgimage);
     GLuint height = CGImageGetHeight(cgimage);
-    NSLog(@"creating texture of size: %d x %d", width, height);
+    GLuint texture_w = pow(2, ceil(log(width)/log(2))), texture_h = pow(2, ceil(log(height)/log(2)));
+    
+    NSLog(@"creating texture of size: %d x %d from image of size %d x %d", texture_w, texture_h, width, height);
     
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-//    void *imageData = malloc( height * width * 4 );
-    void *imageData = malloc( 1024 * 1024 * 4 );
-//    CGContextRef context = CGBitmapContextCreate(imageData, width, height, 8, width * 4, CGImageGetColorSpace(cgimage), kCGImageAlphaPremultipliedLast);
-    CGContextRef context = CGBitmapContextCreate(imageData, 1024, 1024, 8, width * 4, CGImageGetColorSpace(cgimage), kCGImageAlphaPremultipliedLast);
+    void *imageData = malloc( texture_w * texture_h * 4 );
+    CGContextRef context = CGBitmapContextCreate(imageData, texture_w, texture_h, 8, texture_w * 4, CGImageGetColorSpace(cgimage), kCGImageAlphaPremultipliedLast);
     CGColorSpaceRelease( colorSpace );
     CGContextClearRect( context, CGRectMake( 0, 0, width, height ) );
     CGContextTranslateCTM( context, 0, height - height );
     CGContextDrawImage( context, CGRectMake( 0, 0, width, height ), cgimage );
     
-//    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, imageData);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 1024, 1024, 0, GL_RGBA, GL_UNSIGNED_BYTE, imageData);
+    // shouldn't need these
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, texture_w, texture_h, 0, GL_RGBA, GL_UNSIGNED_BYTE, imageData);
     
     CGContextRelease(context);
     free(imageData);
     
     // now draw the texture
-    glEnableClientState(GL_VERTEX_ARRAY);
     glBindTexture(GL_TEXTURE_2D, texture[0]);
     glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
-    glPointSize(width);
+
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+    const GLfloat vertices[] = {0.0,0.0, width,0.0, width,height, 0.0,0.0, 0.0,height, width,height};
+    glVertexPointer(2, GL_FLOAT, 0, vertices);
     
-    GLfloat vertex[2] = {width / 2.0, height / 2.0};
-    glVertexPointer(2, GL_FLOAT, 0, vertex);
-    glDrawArrays(GL_POINTS, 0, 1);
+    GLfloat s_width = 1.0 * width / texture_w, s_height = 1.0 * height / texture_h;
+    const GLfloat texCoords[] = {0.0,1.0, s_width,1.0, s_width,1-s_height, 0.0,1.0, 0.0,1-s_height, s_width,1-s_height};
+    glTexCoordPointer(2, GL_FLOAT, 0, texCoords);
+    glDrawArrays(GL_TRIANGLES, 0, 6);
+    
+
+//    glPointSize(width);
+//    GLfloat vertex[2] = {width / 2.0, height / 2.0};
+//    glVertexPointer(2, GL_FLOAT, 0, vertex);
+//    glDrawArrays(GL_POINTS, 0, 1);
     
 	// Display the buffer
 	glBindRenderbufferOES(GL_RENDERBUFFER_OES, view.renderBuffer);
