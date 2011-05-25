@@ -3,48 +3,8 @@
  Abstract: The class responsible for the finger painting. The class wraps the 
  CAEAGLLayer from CoreAnimation into a convenient UIView subclass. The view 
  content is basically an EAGL surface you render your OpenGL scene into.
-  Version: 1.11
  
- Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
- Inc. ("Apple") in consideration of your agreement to the following
- terms, and your use, installation, modification or redistribution of
- this Apple software constitutes acceptance of these terms.  If you do
- not agree with these terms, please do not use, install, modify or
- redistribute this Apple software.
- 
- In consideration of your agreement to abide by the following terms, and
- subject to these terms, Apple grants you a personal, non-exclusive
- license, under Apple's copyrights in this original Apple software (the
- "Apple Software"), to use, reproduce, modify and redistribute the Apple
- Software, with or without modifications, in source and/or binary forms;
- provided that if you redistribute the Apple Software in its entirety and
- without modifications, you must retain this notice and the following
- text and disclaimers in all such redistributions of the Apple Software.
- Neither the name, trademarks, service marks or logos of Apple Inc. may
- be used to endorse or promote products derived from the Apple Software
- without specific prior written permission from Apple.  Except as
- expressly stated in this notice, no other rights or licenses, express or
- implied, are granted by Apple herein, including but not limited to any
- patent rights that may be infringed by your derivative works or by other
- works in which the Apple Software may be incorporated.
- 
- The Apple Software is provided by Apple on an "AS IS" basis.  APPLE
- MAKES NO WARRANTIES, EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION
- THE IMPLIED WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY AND FITNESS
- FOR A PARTICULAR PURPOSE, REGARDING THE APPLE SOFTWARE OR ITS USE AND
- OPERATION ALONE OR IN COMBINATION WITH YOUR PRODUCTS.
- 
- IN NO EVENT SHALL APPLE BE LIABLE FOR ANY SPECIAL, INDIRECT, INCIDENTAL
- OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
- SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
- INTERRUPTION) ARISING IN ANY WAY OUT OF THE USE, REPRODUCTION,
- MODIFICATION AND/OR DISTRIBUTION OF THE APPLE SOFTWARE, HOWEVER CAUSED
- AND WHETHER UNDER THEORY OF CONTRACT, TORT (INCLUDING NEGLIGENCE),
- STRICT LIABILITY OR OTHERWISE, EVEN IF APPLE HAS BEEN ADVISED OF THE
- POSSIBILITY OF SUCH DAMAGE.
- 
- Copyright (C) 2010 Apple Inc. All Rights Reserved.
- 
+ Makes heavy use of the original PaintingView from Apples sample code.
 */
 
 #import <QuartzCore/QuartzCore.h>
@@ -59,6 +19,8 @@
 
 - (BOOL)createFramebuffer;
 - (void)destroyFramebuffer;
+- (void)saveSnapshot;
+- (void)restoreSnapshot;
 @end
 
 @implementation PaintingView
@@ -91,8 +53,7 @@
 			return nil;
 		}
 		
-		// Create a texture from an image
-		// First create a UIImage object from the data in a image file, and then extract the Core Graphics image
+		// Create the brush textures
 		brushTexture = [self prepareBrush:[UIImage imageNamed:@"brush-64.png"].CGImage];
 		penTexture = [self prepareBrush:[UIImage imageNamed:@"pencil-8.png"].CGImage];
 				
@@ -118,16 +79,9 @@
 		
 		glEnable(GL_POINT_SPRITE_OES);
 		glTexEnvf(GL_POINT_SPRITE_OES, GL_COORD_REPLACE_OES, GL_TRUE);
-//		glPointSize(width / kBrushScale);
-//        glPointSize(32.0);
 		
 		// Make sure to start with a cleared buffer
 		needsErase = YES;
-		
-		// Playback recorded path, which is "Shake Me"
-//		recordedPaths = [NSMutableArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Recording" ofType:@"data"]];
-//		if([recordedPaths count])
-//			[self performSelector:@selector(playback:) withObject:recordedPaths afterDelay:0.2];
 	}
 	
 	return self;
@@ -252,6 +206,64 @@
 	}
 }
 
+- (void) writeSnapshot
+{
+    // save out to a file
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    
+    NSData* imgData = UIImagePNGRepresentation(snapshot);
+    NSString* targetPath = [NSString stringWithFormat:@"%@/%@", documentsDirectory, @"thisismyview.png" ];
+    NSLog(targetPath);
+    [imgData writeToFile:targetPath atomically:YES]; 
+}
+
+- (void) saveSnapshot
+{    
+    const int width = self.bounds.size.width, height = self.bounds.size.height, dataLength = width * height * 4;
+    
+    GLubyte *buffer = (GLubyte *) malloc(sizeof(GLubyte) * dataLength);
+    glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
+    
+    // make data provider with data.
+    CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, buffer, dataLength, NULL);
+    
+    // prep the ingredients
+    int bitsPerComponent = 8;
+    int bitsPerPixel = 32;
+    int bytesPerRow = 4 * width;
+    CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceRGB();
+    CGBitmapInfo bitmapInfo = kCGBitmapByteOrderDefault | kCGImageAlphaLast;
+    CGColorRenderingIntent renderingIntent = kCGRenderingIntentDefault;
+    
+    // make the cgimage
+    CGImageRef imageRef = CGImageCreate(width, height, bitsPerComponent, bitsPerPixel, bytesPerRow, colorSpaceRef, bitmapInfo, provider, NULL, NO, renderingIntent);
+    
+    // then make the uiimage from that
+    snapshot = [ UIImage imageWithCGImage:imageRef scale:1.0 orientation:UIImageOrientationUp ];
+    CGImageRelease( imageRef );
+    
+    [self writeSnapshot];
+
+//    Boolean allZero = true;
+//    for (int i = 0; i < width * height * 4; i++) {
+//        allZero = allZero || (savedBuffer[i] == 0);
+//    }
+//    if (allZero) {
+//        NSLog(@"All Zero");
+//    } else {
+//        NSLog(@"Not all Zero");
+//    }
+    
+//    NSLog(@"%f, %f, %f, %f, %f, %f, %f, %f", savedBuffer[0], savedBuffer[1], savedBuffer[2], savedBuffer[3], savedBuffer[4], savedBuffer[5], savedBuffer[6], savedBuffer[7]);
+}
+
+- (void) restoreSnapshot
+{
+//    GLsizei width = self.bounds.size.width, height = self.bounds.size.height;
+//    glDrawPixels(width, height, GL_RGBA, GL_FLOAT, savedBuffer);
+}
+
 // Releases resources when they are not longer needed.
 - (void) dealloc
 {
@@ -306,7 +318,7 @@
 	// Render the vertex array
 	glVertexPointer(2, GL_FLOAT, 0, vertexBuffer);
 	glDrawArrays(GL_POINTS, 0, vertexCount);
-	
+    
 	// Display the buffer
 	glBindRenderbufferOES(GL_RENDERBUFFER_OES, viewRenderbuffer);
 	[context presentRenderbuffer:GL_RENDERBUFFER_OES];
@@ -429,6 +441,6 @@
 // undoes the last drawing action
 - (void) undo
 {
-    // pass
+    [self saveSnapshot];
 }
 @end

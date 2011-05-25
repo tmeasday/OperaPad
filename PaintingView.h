@@ -86,6 +86,8 @@ typedef struct {
     brush_t penTexture;
 	brush_t brushTexture;
     
+    UIImage *snapshot;
+    
 	CGPoint	location;
 	CGPoint	previousLocation;
 	Boolean	firstTouch;
