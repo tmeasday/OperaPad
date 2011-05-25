@@ -9,17 +9,18 @@
 #import "OperaPadViewController.h"
 #import "PaintingView.h"
 
+@interface OperaPadViewController (private)
+- (UIImage *) loadPageImage:(NSInteger)page;
+@end
+
 @implementation OperaPadViewController
-@synthesize scoreImage;
-@synthesize overlayView;
+
 @synthesize modeChooser;
 @synthesize scrollView;
 
 - (void)dealloc
 {
     [scrollView release];
-    [scoreImage release];
-    [overlayView release];
     [modeChooser release];
     [super dealloc];
 }
@@ -39,12 +40,29 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+//    NSInteger width = self.view.frame.size.width, height = self.view.frame.size.height;
+    // not sure how to get the right values for these
+    NSInteger width = 1024, height = 768;
     
     int nPages = 3;
-    scrollView.contentSize = CGSizeMake(nPages*1024,768-20);
+    scrollView.contentSize = CGSizeMake(nPages*width,height-20);
+    
+    // load all the pages up
+    for (int i = 0; i < N_CACHED_PAGES; i++) {
+        CGRect rect = CGRectMake((((N_CACHED_PAGES-1)/-2) + i) * width, 0, width, height);
+        scorePages[i] = [[UIImageView alloc] initWithFrame:rect];
+        
+        UIImage *pageImage = [self loadPageImage:i];
+        if (pageImage != NULL) [scorePages[i] setImage:pageImage];
+        
+        [scrollView addSubview:scorePages[i]];
+        [scorePages[i] release]; // the scrollView has a reference now
+    }
         
     // rotate the modeChooser vertical
     // modeChooser.transform = CGAffineTransformTranslate(CGAffineTransformMakeRotation(M_PI / 2.0), modeChooser.frame.size.width/2,0.0);
+    
+    [self.view bringSubviewToFront:modeChooser];
     
     
     // read mode
@@ -55,8 +73,8 @@
 - (void)viewDidUnload
 {
     [self setScrollView:nil];
-    [self setScoreImage:nil];
-    [self setOverlayView:nil];
+//    [self setScoreImage:nil];
+//    [self setOverlayView:nil];
     [self setModeChooser:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
@@ -69,35 +87,55 @@
     return YES;
 }
 
+- (void) scrollViewDidScroll:(UIScrollView *)sender
+{
+    CGFloat pageWidth = scrollView.frame.size.width;
+    NSInteger newPageNumber = lround(scrollView.contentOffset.x / pageWidth);
+    
+    if (newPageNumber != pageNumber) {
+        
+    }
+}
+
 - (IBAction)modeChanged:(id)sender {
     switch (modeChooser.selectedSegmentIndex) {
         case 0: // move
             scrollView.scrollEnabled = YES;
             scrollView.pagingEnabled = YES;
-            overlayView.disabled = YES;
+//            overlayView.disabled = YES;
             break;
         case 1: // draw
             scrollView.scrollEnabled = NO;
             scrollView.pagingEnabled = NO;
 
-            overlayView.disabled = NO;
-            [overlayView setBrushColorWithRed: 0.8 green:0.2 blue:0.2 opacity:1.0];
+//            overlayView.disabled = NO;
+//            [overlayView setBrushColorWithRed: 0.8 green:0.2 blue:0.2 opacity:1.0];
             break;
         case 2: // undo
-            [overlayView undo];
+//            [overlayView undo];
             modeChooser.selectedSegmentIndex = 1;
             break;
         case 3: // erase
             scrollView.scrollEnabled = NO;
             scrollView.pagingEnabled = NO;
             
-            overlayView.disabled = NO;
-            [overlayView setEraserMode]; 
+//            overlayView.disabled = NO;
+//            [overlayView setEraserMode]; 
             break;
         case 4: // clear
-            [overlayView clear];
+//            [overlayView clear];
             modeChooser.selectedSegmentIndex = 1;
             break;
     }    
+}
+                                                                   
+- (UIImage *) loadPageImage:(NSInteger)page
+{
+    if (page > 0) {
+        NSString *filename = [NSString stringWithFormat:@"puccini-%d.png", page];
+        return [UIImage imageNamed:filename];        
+    } else {
+        return NULL;
+    }
 }
 @end

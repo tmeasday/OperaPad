@@ -13,7 +13,6 @@
 		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<string>IBUISegmentedControl</string>
-			<string>IBUIImageView</string>
 			<string>IBUIView</string>
 			<string>IBUIScrollView</string>
 			<string>IBProxyObject</string>
@@ -47,47 +46,10 @@
 					<object class="IBUIScrollView" id="98583637">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">274</int>
-						<object class="NSMutableArray" key="NSSubviews">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBUIImageView" id="326467806">
-								<reference key="NSNextResponder" ref="98583637"/>
-								<int key="NSvFlags">274</int>
-								<string key="NSFrameSize">{1024, 748}</string>
-								<reference key="NSSuperview" ref="98583637"/>
-								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="546440517"/>
-								<int key="IBUIContentMode">7</int>
-								<bool key="IBUIUserInteractionEnabled">NO</bool>
-								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-								<object class="NSCustomResource" key="IBUIImage">
-									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">pucinni-all.png</string>
-								</object>
-							</object>
-							<object class="IBUIView" id="334547466">
-								<reference key="NSNextResponder" ref="98583637"/>
-								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{0, -10}, {1024, 768}}</string>
-								<reference key="NSSuperview" ref="98583637"/>
-								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="326467806"/>
-								<object class="NSColor" key="IBUIBackgroundColor">
-									<int key="NSColorSpace">3</int>
-									<bytes key="NSWhite">MSAwAA</bytes>
-									<object class="NSColorSpace" key="NSCustomColorSpace">
-										<int key="NSID">2</int>
-									</object>
-								</object>
-								<bool key="IBUIOpaque">NO</bool>
-								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
-								<int key="IBUIContentMode">9</int>
-								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-							</object>
-						</object>
 						<string key="NSFrameSize">{1024, 748}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="334547466"/>
+						<reference key="NSNextKeyView"/>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -188,14 +150,6 @@
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">scoreImage</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="326467806"/>
-					</object>
-					<int key="connectionID">11</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">scrollView</string>
 						<reference key="source" ref="841351856"/>
 						<reference key="destination" ref="98583637"/>
@@ -209,14 +163,6 @@
 						<reference key="destination" ref="766721923"/>
 					</object>
 					<int key="connectionID">13</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">overlayView</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="334547466"/>
-					</object>
-					<int key="connectionID">19</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -234,6 +180,14 @@
 						<reference key="destination" ref="546440517"/>
 					</object>
 					<int key="connectionID">22</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">delegate</string>
+						<reference key="source" ref="98583637"/>
+						<reference key="destination" ref="841351856"/>
+					</object>
+					<int key="connectionID">23</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -272,23 +226,8 @@
 						<reference key="object" ref="98583637"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="326467806"/>
-							<reference ref="334547466"/>
 						</object>
 						<reference key="parent" ref="766721923"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">18</int>
-						<reference key="object" ref="334547466"/>
-						<object class="NSMutableArray" key="children">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-						</object>
-						<reference key="parent" ref="98583637"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">10</int>
-						<reference key="object" ref="326467806"/>
-						<reference key="parent" ref="98583637"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">20</int>
@@ -303,9 +242,6 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>-1.CustomClassName</string>
 					<string>-2.CustomClassName</string>
-					<string>10.IBPluginDependency</string>
-					<string>18.CustomClassName</string>
-					<string>18.IBPluginDependency</string>
 					<string>2.IBEditorWindowLastContentRect</string>
 					<string>2.IBPluginDependency</string>
 					<string>20.IBPluginDependency</string>
@@ -316,9 +252,6 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>OperaPadViewController</string>
 					<string>UIResponder</string>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>PaintingView</string>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>{{513, 0}, {783, 856}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -338,19 +271,11 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">22</int>
+			<int key="maxID">23</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<object class="IBPartialClassDescription">
-					<string key="className">DrawingView</string>
-					<string key="superclassName">UIImageView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/DrawingView.h</string>
-					</object>
-				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">OperaPadViewController</string>
 					<string key="superclassName">UIViewController</string>
@@ -377,7 +302,7 @@
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UISegmentedControl</string>
-							<string>DrawingView</string>
+							<string>PaintingView</string>
 							<string>UIImageView</string>
 							<string>UIScrollView</string>
 						</object>
@@ -399,7 +324,7 @@
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">overlayView</string>
-								<string key="candidateClassName">DrawingView</string>
+								<string key="candidateClassName">PaintingView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">scoreImage</string>
@@ -445,7 +370,6 @@
 				<string>eraser.png</string>
 				<string>hand.png</string>
 				<string>pencil.png</string>
-				<string>pucinni-all.png</string>
 				<string>rag.png</string>
 				<string>undo.png</string>
 			</object>
@@ -454,7 +378,6 @@
 				<string>{25, 20}</string>
 				<string>{20, 20}</string>
 				<string>{16, 20}</string>
-				<string>{3072, 768}</string>
 				<string>{25, 20}</string>
 				<string>{21, 20}</string>
 			</object>

@@ -7,17 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+
+#define N_CACHED_PAGES 3
+
 @class PaintingView;
 
-@interface OperaPadViewController : UIViewController {
+@interface OperaPadViewController : UIViewController<UIScrollViewDelegate> {
     UIScrollView *scrollView;
-    UIImageView *scoreImage;
-    PaintingView *overlayView;
     UISegmentedControl *modeChooser;
+
+    // pages -- TODO: make this a single view
+    UIImageView *scorePages[N_CACHED_PAGES];
+    PaintingView *overlayPages[N_CACHED_PAGES];
+
+    NSInteger pageNumber;
 }
 @property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
-@property (nonatomic, retain) IBOutlet UIImageView *scoreImage;
-@property (nonatomic, retain) IBOutlet PaintingView *overlayView;
 @property (nonatomic, retain) IBOutlet UISegmentedControl *modeChooser;
 
 - (IBAction)modeChanged:(id)sender;

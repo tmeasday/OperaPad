@@ -167,12 +167,6 @@
     glTexCoordPointer(2, GL_FLOAT, 0, texCoords);
     glDrawArrays(GL_TRIANGLES, 0, 6);
     
-
-//    glPointSize(width);
-//    GLfloat vertex[2] = {width / 2.0, height / 2.0};
-//    glVertexPointer(2, GL_FLOAT, 0, vertex);
-//    glDrawArrays(GL_POINTS, 0, 1);
-    
 	// Display the buffer
 	glBindRenderbufferOES(GL_RENDERBUFFER_OES, view.renderBuffer);
 	[view.context presentRenderbuffer:GL_RENDERBUFFER_OES];       
